@@ -5,236 +5,331 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>StaffPulse — Premium Hotel Reputation & Staff Performance Engine</title>
-    <!-- Najnowszy Tailwind CSS CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        luxury: {
+                            bg: '#08080a', // Even deeper, ink-like black
+                            card: '#0d0d12',
+                            border: '#1a1a24',
+                            emerald: '#0d9468', // slightly darker, more muted emerald
+                            teal: '#11998e'
+                        }
+                    },
+                    backgroundImage: {
+                        'luxury-gradient': 'linear-gradient(to right, #0d9468, #11998e)',
+                    }
+                }
+            }
+        }
+    </script>
     <style>
         body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #08080a;
+            color: #e5e7eb;
+        }
+        
+        .glass-card {
+            background: rgba(13, 13, 18, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .ambient-glow {
+            position: absolute;
+            width: 100vw;
+            height: 100vh;
+            background: radial-gradient(circle at 50% 0%, rgba(13, 148, 104, 0.03) 0%, rgba(8, 8, 10, 0) 60%);
+            top: 0;
+            left: 0;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); } /* Very subtle float */
+            100% { transform: translateY(0px); }
+        }
+        .animate-float {
+            animation: float 12s ease-in-out infinite; /* Slower, more elegant animation */
         }
     </style>
 </head>
 
-<body class="bg-[#0B0F19] text-slate-100 antialiased selection:bg-emerald-500 selection:text-slate-900">
+<body class="antialiased selection:bg-teal-900/40 selection:text-teal-100 overflow-x-hidden font-light">
+    
+    <div class="ambient-glow"></div>
+
+    <!-- Navigation / Top Bar -->
+    <nav class="fixed w-full z-50 glass-card border-b-0 border-white/5 py-5 px-6 md:px-12 flex justify-between items-center transition-all duration-700 rounded-none">
+        <div class="flex items-center gap-3">
+            <span class="w-1.5 h-1.5 rounded-full bg-luxury-emerald opacity-80"></span>
+            <span class="font-bold text-lg tracking-[0.1em] text-white">StaffPulse<span class="text-luxury-emerald">.eu</span></span>
+        </div>
+        <div>
+            <a href="#apply" class="text-[10px] font-bold uppercase tracking-[0.3em] text-white/50 hover:text-white transition-colors duration-700 border border-white/5 px-6 py-3 rounded-md hover:bg-white/5 hover:border-white/10">Pilot Access</a>
+        </div>
+    </nav>
 
     <!-- HERO SECTION -->
-    <header
-        class="relative overflow-hidden bg-radial from-[#151D30] to-[#0B0F19] pt-24 pb-20 border-b border-slate-800/60">
-        <!-- Subtelny efekt świetlny w tle (UX Magic) -->
-        <div
-            class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[350px] bg-indigo-500/10 blur-[120px] rounded-full pointer-events-none">
-        </div>
-
-        <div class="max-w-5xl mx-auto px-6 text-center relative z-10">
-            <div
-                class="inline-flex items-center gap-2 bg-slate-800/80 border border-slate-700/50 text-emerald-400 text-xs font-semibold tracking-wider uppercase px-4 py-1.5 rounded-full mb-6 backdrop-blur-md">
-                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> StaffPulse.eu
+    <header class="relative pt-48 pb-32 px-6">
+        <div class="max-w-5xl mx-auto text-center relative z-10">
+            <div class="inline-flex items-center gap-4 glass-card text-luxury-emerald text-[9px] md:text-[10px] font-bold tracking-[0.3em] uppercase px-6 py-2.5 rounded mb-10 opacity-80">
+                <span class="w-1 h-1 bg-luxury-emerald rounded-full"></span>
+                Enterprise Reputation Engine
             </div>
 
-            <h1
-                class="text-4xl md:text-6xl font-extrabold text-white tracking-tight max-w-4xl mx-auto leading-[1.15] mb-6">
-                Turn Your Staff's Daily Routine <br class="hidden md:inline">
-                Into A <span
-                    class="bg-gradient-to-r from-emerald-400 via-teal-300 to-indigo-400 bg-clip-text text-transparent">5-Star
-                    Review Engine</span>
+            <h1 class="font-serif text-5xl md:text-7xl text-white tracking-tight max-w-4xl mx-auto leading-[1.15] mb-10 font-medium">
+                Turn Your Staff's Daily Routine Into A <br class="hidden md:inline">
+                <span class="text-transparent bg-clip-text bg-luxury-gradient">5-Star Review Engine.</span>
             </h1>
 
-            <p class="text-base md:text-xl text-slate-400 max-w-3xl mx-auto leading-relaxed mb-10 font-light">
-                Stop losing direct bookings to your competitors due to low algorithmic visibility. StaffPulse leverages
-                friendly staff competition to organically boost your ratings—while intercepting negative feedback
-                instantly.
+            <p class="text-lg text-gray-400 max-w-2xl mx-auto leading-loose mb-16 font-light">
+                Stop losing direct bookings to OTA algorithms. StaffPulse leverages subtle gamification to organically elevate your TripAdvisor and Google ratings, while intercepting negative feedback before it hits the internet.
             </p>
 
-            <div>
-                <a href="#apply"
-                    class="inline-flex items-center justify-center bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-slate-950 font-bold px-8 py-4 rounded-xl shadow-lg shadow-emerald-950/50 transition-all transform hover:-translate-y-0.5 group">
-                    Apply for the Pilot Program
-                    <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none"
-                        stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-                    </svg>
+            <div class="flex flex-col items-center">
+                <a href="#apply" class="relative group inline-flex items-center justify-center bg-luxury-emerald hover:bg-luxury-teal text-luxury-bg font-bold text-sm px-12 py-5 rounded-lg transition-all duration-700">
+                    <span class="relative z-10 flex items-center tracking-[0.1em] uppercase text-xs">
+                        Apply for the Exclusive Pilot
+                    </span>
+                    <div class="absolute inset-0 h-full w-full rounded-lg blur-md bg-luxury-gradient opacity-20 group-hover:opacity-40 transition-opacity duration-700"></div>
                 </a>
-                <p class="text-xs text-slate-500 mt-3 font-medium">Only 2 properties accepted this month</p>
+                <p class="text-[10px] text-gray-500 mt-6 font-semibold tracking-[0.2em] uppercase opacity-70">Only 3 premium properties accepted this month</p>
             </div>
         </div>
     </header>
 
-    <!-- THE PROBLEM (Psychologiczne uderzenie w ból) -->
-    <section class="max-w-5xl mx-auto px-6 py-20">
-        <div class="text-center mb-16">
-            <h2 class="text-xs font-bold uppercase tracking-widest text-indigo-400 mb-2">The Reality</h2>
-            <p class="text-2xl md:text-3xl font-bold text-white tracking-tight">Why Premium Hotels Lose the Reputation
-                Game</p>
+    <!-- THE PROBLEM / FUNNEL ANALYSIS -->
+    <section class="max-w-6xl mx-auto px-6 py-32 border-t border-white/5 relative">
+        <div class="text-center mb-20">
+            <h2 class="text-[10px] font-bold uppercase tracking-[0.3em] text-gray-500 mb-4 opacity-70">Executive Financial Report</h2>
+            <p class="font-serif text-3xl md:text-4xl font-medium text-white">The Cost of Guest Silence: Lost Direct Bookings Analysis</p>
         </div>
 
-        <div class="grid md:grid-cols-3 gap-8">
-            <div
-                class="bg-slate-900/40 p-8 rounded-2xl border border-slate-800/60 backdrop-blur-sm hover:border-slate-700/50 transition-all">
-                <div
-                    class="w-12 h-12 rounded-xl bg-indigo-500/10 flex items-center justify-center text-indigo-400 font-bold text-lg mb-6">
-                    98%</div>
-                <h3 class="text-white font-semibold text-lg mb-2">Silent Happy Guests</h3>
-                <p class="text-sm text-slate-400 leading-relaxed font-light">Satisfied guests leave without writing a
-                    single review because traditional post-checkout emails are simply ignored.</p>
+        <div class="grid md:grid-cols-2 gap-6 md:gap-10">
+            <!-- Left Card: The Email Loop -->
+            <div class="glass-card p-10 md:p-14 rounded-xl relative overflow-hidden border-white/5">
+                <h3 class="text-[10px] font-bold text-gray-400 mb-12 tracking-[0.3em] uppercase">Reputation Leakage (Traditional Email Loop)</h3>
+                
+                <div class="flex flex-col items-center">
+                    <div class="border border-white/10 px-8 py-4 rounded w-full max-w-sm text-center">
+                        <span class="text-lg font-medium text-gray-200 tracking-wide">1,000 Happy Guests</span>
+                    </div>
+                    
+                    <div class="flex flex-col items-center my-6">
+                        <div class="h-12 border-l border-dashed border-gray-600 relative">
+                            <div class="absolute -bottom-1 -left-1 w-2 h-2 border-b border-r border-gray-600 transform rotate-45"></div>
+                        </div>
+                        <div class="text-center mt-4 text-[11px] text-gray-500 tracking-widest uppercase">
+                            <span class="block mb-1">Traditional Post-Stay Email</span>
+                            <span class="text-gray-400">(2% conversion)</span>
+                        </div>
+                    </div>
+                    
+                    <div class="border border-white/10 bg-white/[0.02] px-8 py-8 rounded w-full mt-4 text-center">
+                        <h4 class="text-2xl font-serif text-white mb-4">Only 20 reviews generated</h4>
+                        <p class="text-sm text-gray-400 leading-loose font-light">
+                            The remaining <strong class="text-gray-200 font-medium">980 guests (98%)</strong> leave in silence, failing to build your property's online visibility and competitive advantage.
+                        </p>
+                    </div>
+                </div>
             </div>
 
-            <div
-                class="bg-slate-900/40 p-8 rounded-2xl border border-slate-800/60 backdrop-blur-sm hover:border-slate-700/50 transition-all">
-                <div
-                    class="w-12 h-12 rounded-xl bg-rose-500/10 flex items-center justify-center text-rose-400 font-bold text-lg mb-6">
-                    ⚠️</div>
-                <h3 class="text-white font-semibold text-lg mb-2">The Loud Minority</h3>
-                <p class="text-sm text-slate-400 leading-relaxed font-light">One tiny staff mistake or a cold drink
-                    instantly turns into a devastating 1-star public review that drops your booking rank permanently.
+            <!-- Right Card: Financial Impact -->
+            <div class="glass-card p-10 md:p-14 rounded-xl relative overflow-hidden border-white/5">
+                <h3 class="text-[10px] font-bold text-gray-400 mb-10 tracking-[0.3em] uppercase">Financial & Algorithmic Cost</h3>
+                
+                <div class="mb-12">
+                    <span class="text-5xl md:text-6xl font-serif text-gray-200 tracking-tight">-15% Direct Bookings</span>
+                </div>
+                
+                <div class="border-l border-l-white/20 pl-8">
+                    <h4 class="text-sm font-semibold text-white mb-4 tracking-[0.1em] uppercase">Algorithm Drop Penalty:</h4>
+                    <p class="text-sm text-gray-400 leading-loose font-light mb-6">
+                        When your average score drops from <strong class="text-gray-200 font-medium">4.3 to 3.9</strong>, Booking.com and TripAdvisor algorithms immediately push your property to the second page of search results.
+                    </p>
+                    <p class="text-sm text-gray-400 leading-loose font-light">
+                        This signifies a forced dependency on high OTA commissions <strong class="text-gray-200 font-medium">(15-22%)</strong> to maintain occupancy rates.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- THE SOLUTION / THE BLUEPRINT -->
+    <section class="relative bg-luxury-card border-y border-white/5 py-32 overflow-hidden">
+        <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4wMikiLz48L3N2Zz4=')] opacity-50"></div>
+        
+        <div class="max-w-6xl mx-auto px-6 relative z-10">
+            
+            <div class="text-center mb-20">
+                <h2 class="text-[10px] font-bold uppercase tracking-[0.3em] text-luxury-emerald mb-4 opacity-80">The Blueprint</h2>
+                <h3 class="font-serif text-3xl md:text-5xl font-medium text-white leading-tight">
+                    The 4-Second Interaction That Protects Your Revenue.
+                </h3>
+            </div>
+
+            <!-- Full Width Image Container -->
+            <div class="mb-24 relative max-w-5xl mx-auto">
+                <div class="absolute inset-0 bg-luxury-emerald/5 blur-[120px] z-0"></div>
+                <div class="relative z-10 glass-card p-1 rounded-xl animate-float shadow-[0_20px_60px_-15px_rgba(0,0,0,0.5)] border-white/5">
+                    <div class="bg-luxury-bg rounded-lg overflow-hidden border border-white/5 relative">
+                        <!-- Premium Image Integration -->
+                        <img src="staffpulse_image.png" alt="StaffPulse QR Scanning Mechanism" class="w-full h-auto object-cover opacity-80 hover:opacity-100 transition-opacity duration-1000 grayscale-[20%] hover:grayscale-0">
+                        
+                        <div class="absolute top-8 right-8 glass-card px-5 py-2.5 rounded flex items-center gap-3 border-white/10">
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 opacity-80"></span>
+                            <span class="text-[9px] font-bold text-gray-300 uppercase tracking-[0.2em]">Live System Active</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Reassuring text -->
+                <p class="text-center text-xs text-gray-500 mt-8 tracking-widest uppercase opacity-60">IT Integration is not required. Operates independently of your PMS.</p>
+            </div>
+            
+            <!-- 3 Steps Grid -->
+            <div class="grid md:grid-cols-3 gap-10 mb-16">
+                <div class="border-t border-t-white/10 pt-8">
+                    <div class="text-[10px] font-bold text-gray-500 mb-4 tracking-[0.2em]">01</div>
+                    <h4 class="text-lg font-serif text-white mb-4">The Physical Touchpoint</h4>
+                    <p class="text-gray-400 font-light text-sm leading-loose">Guests scan a luxurious, personalized QR code presented by your staff at the pool bar, restaurant, or reception immediately after a great interaction.</p>
+                </div>
+
+                <div class="border-t border-t-luxury-emerald/50 pt-8 relative">
+                    <div class="text-[10px] font-bold text-luxury-emerald mb-4 tracking-[0.2em]">02</div>
+                    <h4 class="text-lg font-serif text-gray-200 mb-4">The Smart Routing Filter</h4>
+                    <p class="text-gray-400 font-light text-sm leading-loose">Our Link-Shield Engine analyzes sentiment instantly. Thrilled guests are routed in exactly 1-click to leave 5 stars on TripAdvisor or Google.</p>
+                </div>
+
+                <div class="border-t border-t-white/10 pt-8">
+                    <div class="text-[10px] font-bold text-gray-500 mb-4 tracking-[0.2em]">03</div>
+                    <h4 class="text-lg font-serif text-white mb-4 flex items-center gap-2">
+                        Live Damage Control
+                        <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                    </h4>
+                    <p class="text-gray-400 font-light text-sm leading-loose">Negative feedback is trapped internally. An automated alert is sent to the Shift Manager to resolve the issue on-site before the guest departs.</p>
+                </div>
+            </div>
+
+            <!-- Staff Advantage Callout -->
+            <div class="py-10 px-8 border-y border-white/5 max-w-4xl mx-auto text-center mt-12">
+                <h5 class="text-xs tracking-[0.3em] uppercase text-gray-400 font-bold mb-4">Zero Management Overhead</h5>
+                <p class="text-sm text-gray-400 font-light leading-loose max-w-2xl mx-auto">
+                    Powered by gamification. Your staff eagerly drives this process because they compete for the "Employee of the Week" bonus on the transparent back-office leaderboard.
                 </p>
             </div>
 
-            <div
-                class="bg-slate-900/40 p-8 rounded-2xl border border-slate-800/60 backdrop-blur-sm hover:border-slate-700/50 transition-all">
-                <div
-                    class="w-12 h-12 rounded-xl bg-amber-500/10 flex items-center justify-center text-amber-400 font-bold text-lg mb-6">
-                    -15%</div>
-                <h3 class="text-white font-semibold text-lg mb-2">The Revenue Leak</h3>
-                <p class="text-sm text-slate-400 leading-relaxed font-light">A minor drop in score costs you up to 15%
-                    of direct seasonal bookings, forcing you back into paying heavy OTA commissions.</p>
-            </div>
         </div>
     </section>
 
-    <!-- HOW IT WORKS (UX-owy podział na ścieżki i inteligentny filtr) -->
-    <section class="bg-slate-900/20 border-y border-slate-800/60 py-20">
-        <div class="max-w-5xl mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-xs font-bold uppercase tracking-widest text-emerald-400 mb-2">The Blueprint</h2>
-                <p class="text-2xl md:text-3xl font-bold text-white tracking-tight">3 Steps to Absolute Reputation
-                    Control</p>
+    <!-- FORM SECTION -->
+    <section id="apply" class="py-32 px-6 relative">
+        <div class="max-w-3xl mx-auto relative z-10">
+            
+            <div class="text-center mb-20">
+                <h2 class="font-serif text-4xl md:text-5xl font-medium text-white mb-8">Exclusive Pilot Application</h2>
+                <p class="text-gray-400 text-lg max-w-2xl mx-auto font-light leading-loose">
+                    We are currently selecting <span class="text-gray-200 font-medium">3 premium properties</span> this month for a zero-cost, 30-day implementation to build our enterprise case studies.
+                </p>
             </div>
 
-            <!-- Wizualny schemat filtra zamiast nudnego tekstu -->
-            <div class="grid md:grid-cols-3 gap-8 relative">
-                <div class="flex flex-col items-center text-center p-4 relative z-10">
-                    <div
-                        class="w-16 h-16 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center mb-4 text-xl">
-                        📱</div>
-                    <h4 class="text-white font-semibold mb-2">1. Scan Touchpoint</h4>
-                    <p class="text-xs text-slate-400 leading-relaxed font-light max-w-xs">Guests scan a personalized QR
-                        code at the pool bar, restaurant, or reception to quickly rate their service experience.</p>
-                </div>
+            <div class="glass-card rounded-sm p-8 md:p-16 relative overflow-hidden border-white/5">
+                <form action="https://formspree.io/f/mojgqlza" method="POST" class="relative z-10">
+                    
+                    <div class="space-y-12 mb-16">
+                        <div>
+                            <label class="block text-[10px] font-bold text-gray-500 uppercase tracking-[0.3em] mb-2 opacity-80">General Manager / Director Name</label>
+                            <input type="text" name="manager_name" required
+                                class="w-full px-0 py-4 bg-transparent border-b border-white/10 rounded-none focus:outline-none focus:border-white text-white transition-all duration-700 placeholder:text-gray-700 font-light text-lg"
+                                placeholder="e.g. John Doe">
+                        </div>
 
-                <div
-                    class="flex flex-col items-center text-center p-4 relative z-10 bg-slate-900/60 border border-indigo-500/30 rounded-2xl shadow-lg shadow-indigo-950/20">
-                    <div
-                        class="w-16 h-16 rounded-full bg-indigo-500/10 border border-indigo-500/40 flex items-center justify-center mb-4 text-xl animate-pulse">
-                        ⚡</div>
-                    <h4 class="text-indigo-400 font-bold mb-2">2. Smart Routing Filter</h4>
-                    <p class="text-xs text-slate-300 leading-relaxed font-light max-w-xs">Our backend instantly analyzes
-                        the sentiment. Exceptional ratings are pushed immediately to your public profiles.</p>
-                </div>
+                        <div>
+                            <label class="block text-[10px] font-bold text-gray-500 uppercase tracking-[0.3em] mb-2 opacity-80">Property Name & Location</label>
+                            <input type="text" name="hotel_name" required
+                                class="w-full px-0 py-4 bg-transparent border-b border-white/10 rounded-none focus:outline-none focus:border-white text-white transition-all duration-700 placeholder:text-gray-700 font-light text-lg"
+                                placeholder="e.g. The Grand Resort, Geneva">
+                        </div>
 
-                <div class="flex flex-col items-center text-center p-4 relative z-10">
-                    <div
-                        class="w-16 h-16 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center mb-4 text-xl">
-                        💬</div>
-                    <h4 class="text-white font-semibold mb-2">3. Damage Control</h4>
-                    <p class="text-xs text-slate-400 leading-relaxed font-light max-w-xs">Negative feedback is isolated
-                        inside the system. A WhatsApp alert hits the shift manager instantly, allowing them to fix it
-                        on-site.</p>
-                </div>
-            </div>
+                        <div class="grid md:grid-cols-2 gap-12">
+                            <div>
+                                <label class="block text-[10px] font-bold text-gray-500 uppercase tracking-[0.3em] mb-2 opacity-80">Professional Email</label>
+                                <input type="email" name="email" required
+                                    class="w-full px-0 py-4 bg-transparent border-b border-white/10 rounded-none focus:outline-none focus:border-white text-white transition-all duration-700 placeholder:text-gray-700 font-light text-lg"
+                                    placeholder="director@hotel.com">
+                            </div>
 
-            <!-- Język korzyści: Argument braku narzutu menedżerskiego -->
-            <div
-                class="mt-16 bg-gradient-to-r from-slate-900 via-indigo-950/30 to-slate-900 p-8 rounded-2xl border border-slate-800/80">
-                <div class="grid md:grid-cols-3 gap-6 items-center">
-                    <div class="md:col-span-2">
-                        <h3 class="text-lg font-bold text-white mb-2">Zero Management Overhead. Your Team Drives the
-                            Engine.</h3>
-                        <p class="text-sm text-slate-400 font-light leading-relaxed">
-                            StaffPulse introduces a transparent leaderboard into your staff room. By competing for your
-                            predefined internal bonuses or the "Employee of the Week" title, your waiters and bartenders
-                            are naturally driven to make sure happy guests scan the codes. No retraining required.
-                        </p>
+                            <div>
+                                <label class="block text-[10px] font-bold text-gray-500 uppercase tracking-[0.3em] mb-2 opacity-80">Capacity</label>
+                                <select name="rooms" required class="w-full px-0 py-4 bg-transparent border-b border-white/10 rounded-none focus:outline-none focus:border-white text-white transition-all duration-700 appearance-none font-light text-lg cursor-pointer">
+                                    <option value="" disabled selected class="text-gray-800">Select total rooms...</option>
+                                    <option value="Under 50" class="text-gray-800">Under 50 (Boutique)</option>
+                                    <option value="50-150" class="text-gray-800">50 - 150 Rooms</option>
+                                    <option value="150+" class="text-gray-800">150+ Rooms (Resort)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-[10px] font-bold text-gray-500 uppercase tracking-[0.3em] mb-2 opacity-80 flex justify-between items-center">
+                                <span>TripAdvisor / Google Profile URL</span>
+                                <span class="text-[8px] text-gray-400 tracking-widest flex items-center gap-1">
+                                    <svg class="w-3 h-3 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                                    Audit required
+                                </span>
+                            </label>
+                            <input type="url" name="profile_link" required
+                                class="w-full px-0 py-4 bg-transparent border-b border-white/10 rounded-none focus:outline-none focus:border-white text-white transition-all duration-700 placeholder:text-gray-700 font-light text-lg"
+                                placeholder="https://www...">
+                        </div>
                     </div>
-                    <div class="text-right hidden md:block">
-                        <span
-                            class="text-xs font-bold text-slate-500 uppercase tracking-widest block mb-1">Architecture</span>
-                        <span class="text-sm font-semibold text-indigo-400">Link-Shield Engine Enabled</span>
-                    </div>
-                </div>
+
+                    <button type="submit" class="w-full bg-transparent border border-white/20 text-white font-medium py-6 rounded-sm transition-all duration-700 hover:bg-white hover:text-luxury-bg cursor-pointer group">
+                        <span class="uppercase tracking-[0.2em] text-xs">Request Invitation</span>
+                    </button>
+                    
+                </form>
+            </div>
+            
+            <div class="text-center mt-12 flex items-center justify-center gap-6 text-[10px] text-gray-500 font-medium tracking-widest uppercase opacity-60">
+                <span class="flex items-center gap-1"><svg class="w-3 h-3 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg> Secure</span>
+                <span>•</span>
+                <span>Zero Setup Fees</span>
+                <span>•</span>
+                <span>Cancel Anytime</span>
             </div>
         </div>
     </section>
 
-    <!-- FORM SECTION (Optymalizacja konwersji i jasność pól) -->
-    <section id="apply" class="max-w-2xl mx-auto px-6 py-24 relative">
-        <div
-            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-emerald-500/5 blur-[100px] rounded-full pointer-events-none">
-        </div>
-
-        <div class="text-center mb-10 relative z-10">
-            <h2 class="text-3xl font-black text-white tracking-tight">Exclusive Summer Pilot Program</h2>
-            <p class="mt-3 text-slate-400 text-sm max-w-lg mx-auto font-light leading-relaxed">
-                We accept only <strong class="text-emerald-400 font-semibold">2 premium properties</strong> per month to
-                guarantee hand-held implementation, customized QR assets, and maximal algorithmic rating growth.
-            </p>
-        </div>
-
-        <!-- FORMULARZ Z KROKIEM WALIDACJI (FORMSPREE) -->
-        <form action="https://formspree.io/f/mojgqlza" method="POST"
-            class="bg-slate-900/80 border border-slate-800 p-8 rounded-2xl shadow-2xl relative z-10 backdrop-blur-md space-y-6">
-
-            <div>
-                <label class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Hotel / Property
-                    Name</label>
-                <input type="text" name="hotel_name" placeholder="e.g., Grand Resort & Spa" required
-                    class="w-full px-4 py-3.5 bg-slate-950/60 border border-slate-800 rounded-xl focus:outline-none focus:border-emerald-500 text-slate-200 text-sm transition-all focus:ring-1 focus:ring-emerald-500/20">
+    <!-- FOOTER -->
+    <footer class="border-t border-white/5 py-16 bg-luxury-bg">
+        <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="flex items-center gap-3 opacity-30">
+                <span class="w-1.5 h-1.5 rounded-full bg-gray-500"></span>
+                <span class="font-bold text-sm tracking-[0.2em] text-white">StaffPulse.eu</span>
             </div>
-
-            <div>
-                <label class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">TripAdvisor or
-                    Booking.com Profile URL</label>
-                <input type="url" name="profile_link" placeholder="https://www.tripadvisor.com/Hotel_Review..." required
-                    class="w-full px-4 py-3.5 bg-slate-950/60 border border-slate-800 rounded-xl focus:outline-none focus:border-emerald-500 text-slate-200 text-sm transition-all focus:ring-1 focus:ring-emerald-500/20">
-                <span class="text-[11px] text-slate-500 mt-1 block font-light">We check your current score trends to
-                    ensure you qualify for the pilot criteria.</span>
+            <div class="text-[10px] text-gray-600 font-medium text-center md:text-right tracking-widest uppercase">
+                <p>&copy; 2026 StaffPulse Enterprise Solution.</p>
+                <p class="mt-2">Architected by <span class="text-gray-400">Retek</span> for premium hospitality.</p>
             </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                    <label class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Total Number of
-                        Rooms</label>
-                    <input type="number" name="total_rooms" placeholder="e.g., 140" required
-                        class="w-full px-4 py-3.5 bg-slate-950/60 border border-slate-800 rounded-xl focus:outline-none focus:border-emerald-500 text-slate-200 text-sm transition-all focus:ring-1 focus:ring-emerald-500/20">
-                </div>
-                <div>
-                    <label class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Direct Contact
-                        Email</label>
-                    <input type="email" name="email" placeholder="manager@yourhotel.com" required
-                        class="w-full px-4 py-3.5 bg-slate-950/60 border border-slate-800 rounded-xl focus:outline-none focus:border-emerald-500 text-slate-200 text-sm transition-all focus:ring-1 focus:ring-emerald-500/20">
-                </div>
-            </div>
-
-            <div class="pt-2">
-                <button type="submit"
-                    class="w-full bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-slate-950 font-extrabold py-4 rounded-xl transition-all shadow-md shadow-emerald-950/50 cursor-pointer text-center text-sm tracking-wide uppercase">
-                    Request Pilot Access & Secure Slot
-                </button>
-            </div>
-        </form>
-    </section>
-
-    <!-- FOOTER (Uwzględnienie firmy Retek) -->
-    <footer class="text-center py-12 text-xs text-slate-500 border-t border-slate-800/60 bg-slate-950/20">
-        <div class="max-w-5xl mx-auto px-6 space-y-2">
-            <p>&copy; 2026 StaffPulse.eu. All rights reserved.</p>
-            <p class="font-medium text-slate-400">Developed and maintained by <span
-                    class="text-slate-300 font-semibold">Retek</span>.</p>
         </div>
     </footer>
 
 </body>
-
 </html>
