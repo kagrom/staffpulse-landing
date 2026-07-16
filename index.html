@@ -139,7 +139,7 @@
                 <div class="flex flex-col items-start">
                     <a href="#apply" class="relative group inline-flex items-center justify-center bg-luxury-emerald hover:bg-luxury-teal text-luxury-bg font-bold text-sm px-10 py-5 rounded-lg transition-all duration-700">
                         <span class="relative z-10 flex items-center gap-3 tracking-[0.1em] uppercase text-xs">
-                            Apply for the Exclusive Pilot
+                            Apply for Pilot or Request Offer
                             <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                         </span>
                         <div class="absolute inset-0 h-full w-full rounded-lg blur-md bg-luxury-gradient opacity-30 group-hover:opacity-60 transition-opacity duration-700"></div>
@@ -362,9 +362,9 @@
         <div class="max-w-3xl mx-auto relative z-10">
             
             <div class="text-center mb-20">
-                <h2 class="font-serif text-4xl md:text-5xl font-medium text-white mb-8">Exclusive Pilot Application</h2>
+                <h2 class="font-serif text-4xl md:text-5xl font-medium text-white mb-8">Get Started with StaffPulse.eu</h2>
                 <p class="text-gray-400 text-lg max-w-2xl mx-auto font-light leading-loose">
-                    We are currently selecting <span class="text-gray-200 font-medium">3 premium properties</span> this month for a zero-cost, 30-day implementation to build our enterprise case studies.
+                    Apply for our exclusive, 100% free 30-day pilot program (limited to 3 properties this month), or simply request a customized presentation and pricing deck tailored for your hotel.
                 </p>
             </div>
 
@@ -372,6 +372,27 @@
                 <form action="https://formspree.io/f/mojgqlza" method="POST" class="relative z-10">
                     
                     <div class="space-y-12 mb-16">
+                        <div>
+                            <label class="block text-[10px] font-bold text-gray-500 uppercase tracking-[0.3em] mb-4 opacity-80">Your Primary Interest</label>
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <label class="flex items-center gap-3 p-4 border border-white/10 rounded-sm cursor-pointer transition-all duration-300 hover:border-white/30 has-[:checked]:border-luxury-emerald has-[:checked]:bg-luxury-emerald/10">
+                                    <div class="relative flex items-center justify-center">
+                                        <input type="radio" name="interest" value="pilot" checked class="peer appearance-none w-4 h-4 border border-gray-500 rounded-full checked:border-luxury-emerald cursor-pointer transition-colors">
+                                        <div class="absolute w-2 h-2 bg-luxury-emerald rounded-full opacity-0 peer-checked:opacity-100 transition-opacity pointer-events-none"></div>
+                                    </div>
+                                    <span class="text-sm text-gray-300 font-light peer-checked:text-white">Apply for the Free 30-Day Pilot</span>
+                                </label>
+                                
+                                <label class="flex items-center gap-3 p-4 border border-white/10 rounded-sm cursor-pointer transition-all duration-300 hover:border-white/30 has-[:checked]:border-luxury-emerald has-[:checked]:bg-luxury-emerald/10">
+                                    <div class="relative flex items-center justify-center">
+                                        <input type="radio" name="interest" value="offer" class="peer appearance-none w-4 h-4 border border-gray-500 rounded-full checked:border-luxury-emerald cursor-pointer transition-colors">
+                                        <div class="absolute w-2 h-2 bg-luxury-emerald rounded-full opacity-0 peer-checked:opacity-100 transition-opacity pointer-events-none"></div>
+                                    </div>
+                                    <span class="text-sm text-gray-300 font-light peer-checked:text-white">Request Custom Offer & Pricing</span>
+                                </label>
+                            </div>
+                        </div>
+
                         <div>
                             <label class="block text-[10px] font-bold text-gray-500 uppercase tracking-[0.3em] mb-2 opacity-80">General Manager / Director Name</label>
                             <input type="text" name="manager_name" required
@@ -420,7 +441,7 @@
                     </div>
 
                     <button type="submit" class="w-full bg-transparent border border-white/20 text-white font-medium py-6 rounded-sm transition-all duration-700 hover:bg-white hover:text-luxury-bg cursor-pointer group">
-                        <span class="uppercase tracking-[0.2em] text-xs">Request Invitation</span>
+                        <span class="uppercase tracking-[0.2em] text-xs">Submit Request</span>
                     </button>
                     
                 </form>
