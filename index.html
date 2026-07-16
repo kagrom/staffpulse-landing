@@ -87,30 +87,150 @@
     </nav>
 
     <!-- HERO SECTION -->
-    <header class="relative pt-48 pb-32 px-6">
-        <div class="max-w-5xl mx-auto text-center relative z-10">
-            <div class="inline-flex items-center gap-4 glass-card text-luxury-emerald text-[9px] md:text-[10px] font-bold tracking-[0.3em] uppercase px-6 py-2.5 rounded mb-10 opacity-80">
-                <span class="w-1 h-1 bg-luxury-emerald rounded-full"></span>
-                Enterprise Reputation Engine
+    <header class="relative pt-40 md:pt-48 pb-32 px-6 overflow-hidden">
+        <div class="max-w-6xl mx-auto relative z-10 grid md:grid-cols-2 gap-12 items-center">
+            
+            <!-- Left Column: Copy & CTA -->
+            <div class="text-left">
+                <div class="inline-flex items-center gap-4 glass-card text-luxury-emerald text-[9px] md:text-[10px] font-bold tracking-[0.3em] uppercase px-6 py-2.5 rounded mb-8 opacity-80">
+                    <span class="w-1 h-1 bg-luxury-emerald rounded-full"></span>
+                    Enterprise Reputation Engine
+                </div>
+
+                <div class="flex gap-1 mb-6">
+                    <!-- 5 Golden Stars -->
+                    <svg class="w-6 h-6 text-yellow-400 drop-shadow-[0_0_8px_rgba(250,204,21,0.5)]" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                    <svg class="w-6 h-6 text-yellow-400 drop-shadow-[0_0_8px_rgba(250,204,21,0.5)]" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                    <svg class="w-6 h-6 text-yellow-400 drop-shadow-[0_0_8px_rgba(250,204,21,0.5)]" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                    <svg class="w-6 h-6 text-yellow-400 drop-shadow-[0_0_8px_rgba(250,204,21,0.5)]" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                    <svg class="w-6 h-6 text-yellow-400 drop-shadow-[0_0_8px_rgba(250,204,21,0.5)]" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                </div>
+
+                <h1 class="font-serif text-5xl md:text-6xl lg:text-7xl text-white tracking-tight leading-[1.15] mb-8 font-medium">
+                    Turn Your Staff's Daily Routine Into A <br class="hidden lg:inline">
+                    <span class="text-transparent bg-clip-text bg-luxury-gradient">5-Star Review Engine.</span>
+                </h1>
+
+                <p class="text-lg text-gray-300 leading-relaxed mb-6 font-light">
+                    Stop losing direct bookings to OTA algorithms. StaffPulse leverages subtle gamification to:
+                </p>
+
+                <ul class="space-y-4 mb-12 text-gray-400 font-light text-base">
+                    <li class="flex items-start gap-3">
+                        <div class="bg-luxury-emerald/20 p-1 rounded-full mt-0.5">
+                            <svg class="w-4 h-4 text-luxury-emerald flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+                        </div>
+                        <span><strong class="text-gray-200 font-medium">Organically elevate</strong> Google & TripAdvisor ratings.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <div class="bg-luxury-emerald/20 p-1 rounded-full mt-0.5">
+                            <svg class="w-4 h-4 text-luxury-emerald flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+                        </div>
+                        <span><strong class="text-gray-200 font-medium">Intercept negative feedback</strong> before it goes public.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <div class="bg-luxury-emerald/20 p-1 rounded-full mt-0.5">
+                            <svg class="w-4 h-4 text-luxury-emerald flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+                        </div>
+                        <span><strong class="text-gray-200 font-medium">Boost direct bookings</strong> through automated reputation.</span>
+                    </li>
+                </ul>
+
+                <div class="flex flex-col items-start">
+                    <a href="#apply" class="relative group inline-flex items-center justify-center bg-luxury-emerald hover:bg-luxury-teal text-luxury-bg font-bold text-sm px-10 py-5 rounded-lg transition-all duration-700">
+                        <span class="relative z-10 flex items-center gap-3 tracking-[0.1em] uppercase text-xs">
+                            Apply for the Exclusive Pilot
+                            <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                        </span>
+                        <div class="absolute inset-0 h-full w-full rounded-lg blur-md bg-luxury-gradient opacity-30 group-hover:opacity-60 transition-opacity duration-700"></div>
+                    </a>
+                    
+                    <div class="mt-6 flex flex-wrap items-center gap-4 text-gray-400 text-sm">
+                        <div class="flex items-center gap-2 grayscale hover:grayscale-0 transition-all duration-300 opacity-60 hover:opacity-100 cursor-default">
+                            <img src="https://cdn.simpleicons.org/google" class="w-4 h-4" alt="Google" />
+                            <span class="font-bold text-white tracking-widest text-xs uppercase">Google</span>
+                        </div>
+                        <span class="w-1 h-1 bg-gray-600 rounded-full hidden sm:block"></span>
+                        <div class="flex items-center gap-2 grayscale hover:grayscale-0 transition-all duration-300 opacity-60 hover:opacity-100 cursor-default">
+                            <img src="https://cdn.simpleicons.org/tripadvisor/34E0A1" class="w-5 h-5" alt="TripAdvisor" />
+                            <span class="font-bold text-white tracking-widest text-xs uppercase">TripAdvisor</span>
+                        </div>
+                        <span class="w-1 h-1 bg-gray-600 rounded-full hidden sm:block"></span>
+                        <div class="flex items-center gap-2 grayscale hover:grayscale-0 transition-all duration-300 opacity-60 hover:opacity-100 cursor-default">
+                            <img src="https://cdn.simpleicons.org/bookingdotcom/006CE4" class="w-5 h-5" alt="Booking.com" />
+                            <span class="font-bold text-white tracking-widest text-xs uppercase">Booking.com</span>
+                        </div>
+                    </div>
+
+                    <p class="text-[10px] text-gray-500 mt-6 font-semibold tracking-[0.2em] uppercase opacity-90">Only 3 premium properties accepted this month</p>
+                </div>
             </div>
 
-            <h1 class="font-serif text-5xl md:text-7xl text-white tracking-tight max-w-4xl mx-auto leading-[1.15] mb-10 font-medium">
-                Turn Your Staff's Daily Routine Into A <br class="hidden md:inline">
-                <span class="text-transparent bg-clip-text bg-luxury-gradient">5-Star Review Engine.</span>
-            </h1>
+            <!-- Right Column: Visual UI Mockups -->
+            <div class="relative hidden md:block h-full min-h-[500px]">
+                <div class="absolute inset-0 bg-luxury-emerald/10 blur-[100px] rounded-full pointer-events-none"></div>
+                
+                <!-- Notification Card 1 (Positive) -->
+                <div class="absolute top-[10%] right-[5%] animate-float" style="animation-delay: 0s; z-index: 30;">
+                    <div class="glass-card w-72 lg:w-80 p-5 rounded-xl border-white/10 shadow-2xl transform rotate-2">
+                        <div class="flex items-center justify-between mb-3">
+                            <div class="flex items-center gap-2">
+                                <div class="w-8 h-8 rounded-full bg-white flex items-center justify-center">
+                                    <!-- Google G Logo SVG -->
+                                    <svg class="w-5 h-5" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+                                </div>
+                                <span class="text-xs font-bold text-gray-300">New Review</span>
+                            </div>
+                            <span class="text-[10px] text-gray-500">Just now</span>
+                        </div>
+                        <div class="flex gap-0.5 mb-2">
+                            <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                            <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                            <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                            <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                            <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                        </div>
+                        <p class="text-sm text-gray-200 font-medium">"Amazing service by Sarah at the front desk. Will return!"</p>
+                        <p class="text-[10px] text-gray-400 mt-2">— Michael T.</p>
+                    </div>
+                </div>
 
-            <p class="text-lg text-gray-400 max-w-2xl mx-auto leading-loose mb-16 font-light">
-                Stop losing direct bookings to OTA algorithms. StaffPulse leverages subtle gamification to organically elevate your TripAdvisor and Google ratings, while intercepting negative feedback before it hits the internet.
-            </p>
+                <!-- Notification Card 2 (Intercepted) -->
+                <div class="absolute top-[45%] left-[5%] animate-float" style="animation-delay: -3s; z-index: 20;">
+                    <div class="glass-card w-64 lg:w-72 p-5 rounded-xl border-white/10 shadow-2xl transform -rotate-3">
+                        <div class="flex items-center justify-between mb-3">
+                            <div class="flex items-center gap-2">
+                                <div class="w-8 h-8 rounded-full bg-red-500/10 border border-red-500/30 flex items-center justify-center">
+                                    <svg class="w-4 h-4 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                                </div>
+                                <span class="text-xs font-bold text-gray-300">Feedback Intercepted</span>
+                            </div>
+                        </div>
+                        <p class="text-[11px] text-red-400 font-medium mb-1">Issue reported: Room 402</p>
+                        <p class="text-xs text-gray-400">"The AC was a bit loud..."</p>
+                        <div class="mt-3 inline-flex items-center gap-1.5 bg-red-500/10 text-red-400 text-[9px] px-2.5 py-1.5 rounded uppercase tracking-widest font-bold">
+                            <span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></span>
+                            Internal Resolution
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Gamification Card -->
+                <div class="absolute bottom-[10%] right-[15%] animate-float" style="animation-delay: -6s; z-index: 10;">
+                    <div class="glass-card w-56 lg:w-64 p-4 rounded-xl border-white/10 shadow-2xl transform rotate-1">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-luxury-gradient flex items-center justify-center flex-shrink-0">
+                                <span class="text-white font-bold text-sm drop-shadow-md">#1</span>
+                            </div>
+                            <div>
+                                <p class="text-[9px] text-gray-400 uppercase tracking-widest font-bold mb-0.5">Leaderboard</p>
+                                <p class="text-sm font-medium text-gray-200">Sarah Jenkins</p>
+                                <p class="text-[10px] text-luxury-emerald mt-0.5">12 Reviews Generated</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-            <div class="flex flex-col items-center">
-                <a href="#apply" class="relative group inline-flex items-center justify-center bg-luxury-emerald hover:bg-luxury-teal text-luxury-bg font-bold text-sm px-12 py-5 rounded-lg transition-all duration-700">
-                    <span class="relative z-10 flex items-center tracking-[0.1em] uppercase text-xs">
-                        Apply for the Exclusive Pilot
-                    </span>
-                    <div class="absolute inset-0 h-full w-full rounded-lg blur-md bg-luxury-gradient opacity-20 group-hover:opacity-40 transition-opacity duration-700"></div>
-                </a>
-                <p class="text-[10px] text-gray-500 mt-6 font-semibold tracking-[0.2em] uppercase opacity-70">Only 3 premium properties accepted this month</p>
             </div>
         </div>
     </header>
