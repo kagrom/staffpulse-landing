@@ -5,10 +5,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>StaffPulse — Premium Hotel Reputation & Staff Performance Engine</title>
+    <meta name="description" content="Turn your staff's daily routine into a 5-star review engine. Protect your luxury brand, intercept negative feedback, and boost direct bookings. Free 30-day pilot for premium hotels.">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="StaffPulse — Turn Every Guest Interaction Into a 5-Star Review">
+    <meta property="og:description" content="Enterprise reputation engine for premium hotels. Boost direct bookings, intercept negative feedback, and motivate staff through gamification.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://staffpulse.eu">
+    <meta property="og:image" content="https://staffpulse.eu/staffpulse_image.png">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="StaffPulse — Premium Hotel Reputation Engine">
+    <meta name="twitter:description" content="Turn staff interactions into 5-star reviews. Free 30-day pilot for luxury hotels.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⭐</text></svg>">
+    
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="image" href="staffpulse_hero_bg_light.jpg">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <script>
@@ -21,15 +39,18 @@
                     },
                     colors: {
                         luxury: {
-                            bg: '#08080a', // Even deeper, ink-like black
-                            card: '#0d0d12',
-                            border: '#1a1a24',
-                            emerald: '#0d9468', // slightly darker, more muted emerald
-                            teal: '#11998e'
+                            bg: '#FAFAFA', // Soft off-white for main background
+                            card: '#FFFFFF', // Clean white for cards
+                            border: '#E5E7EB', // Subtle light gray border
+                            text: '#0A192F', // Deep elegant navy for primary text
+                            textmuted: '#4B5563', // Gray-600 for secondary text
+                            emerald: '#0d9468', // Keep the elegant emerald for positive actions
+                            gold: '#D4AF37' // Subtle gold for 5-star accents
                         }
                     },
                     backgroundImage: {
-                        'luxury-gradient': 'linear-gradient(to right, #0d9468, #11998e)',
+                        'luxury-gradient': 'linear-gradient(to right, #0A192F, #1E3A8A)',
+                        'emerald-gradient': 'linear-gradient(to right, #0d9468, #11998e)'
                     }
                 }
             }
@@ -37,23 +58,24 @@
     </script>
     <style>
         body {
-            background-color: #08080a;
-            color: #e5e7eb;
+            background-color: #FAFAFA;
+            color: #0A192F;
         }
         
+        /* Light Premium Glassmorphism */
         .glass-card {
-            background: rgba(13, 13, 18, 0.4);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.03);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(0, 0, 0, 0.04);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04);
         }
 
         .ambient-glow {
             position: absolute;
             width: 100vw;
             height: 100vh;
-            background: radial-gradient(circle at 50% 0%, rgba(13, 148, 104, 0.03) 0%, rgba(8, 8, 10, 0) 60%);
+            background: radial-gradient(circle at 50% -10%, rgba(13, 148, 104, 0.04) 0%, rgba(250, 250, 250, 0) 60%);
             top: 0;
             left: 0;
             z-index: -1;
@@ -62,180 +84,240 @@
 
         @keyframes float {
             0% { transform: translateY(0px); }
-            50% { transform: translateY(-5px); } /* Very subtle float */
+            50% { transform: translateY(-4px); } 
             100% { transform: translateY(0px); }
         }
         .animate-float {
-            animation: float 12s ease-in-out infinite; /* Slower, more elegant animation */
+            animation: float 14s ease-in-out infinite; 
+        }
+
+        /* Scroll-triggered animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Counter animation */
+        .counter-animate {
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* FAQ Accordion */
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1), padding 0.4s ease;
+        }
+        .faq-answer.open {
+            max-height: 300px;
+        }
+        .faq-chevron {
+            transition: transform 0.3s ease;
+        }
+        .faq-chevron.rotated {
+            transform: rotate(180deg);
+        }
+
+        /* Active nav link */
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1.5px;
+            background-color: #0d9468;
+            transition: width 0.3s ease;
+        }
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        /* Mobile menu */
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .mobile-menu.open {
+            transform: translateX(0);
+        }
+
+        /* Sticky mobile CTA */
+        .sticky-cta {
+            transform: translateY(100%);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .sticky-cta.visible {
+            transform: translateY(0);
+        }
+
+        /* Form success state */
+        .form-success {
+            animation: successPulse 0.6s ease;
+        }
+        @keyframes successPulse {
+            0% { transform: scale(0.95); opacity: 0; }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); opacity: 1; }
         }
     </style>
 </head>
 
-<body class="antialiased selection:bg-teal-900/40 selection:text-teal-100 overflow-x-hidden font-light">
+<body class="antialiased selection:bg-luxury-emerald/20 selection:text-luxury-emerald overflow-x-hidden font-light">
     
     <div class="ambient-glow"></div>
 
-    <!-- Navigation / Top Bar -->
-    <nav class="fixed w-full z-50 glass-card border-b-0 border-white/5 py-5 px-6 md:px-12 flex justify-between items-center transition-all duration-700 rounded-none">
+    <!-- ============================================ -->
+    <!-- NAVIGATION — Sticky with anchor links        -->
+    <!-- ============================================ -->
+    <nav id="mainNav" class="fixed w-full z-50 glass-card border-b border-black/5 py-4 px-6 md:px-12 flex justify-between items-center transition-all duration-700 rounded-none">
         <div class="flex items-center gap-3">
-            <span class="w-1.5 h-1.5 rounded-full bg-luxury-emerald opacity-80"></span>
-            <span class="font-bold text-lg tracking-[0.1em] text-white">StaffPulse<span class="text-luxury-emerald">.eu</span></span>
+            <span class="w-1.5 h-1.5 rounded-full bg-luxury-emerald opacity-90"></span>
+            <span class="font-bold text-lg tracking-[0.1em] text-luxury-text">StaffPulse<span class="text-luxury-emerald">.eu</span></span>
         </div>
-        <div>
-            <a href="#apply" class="text-[10px] font-bold uppercase tracking-[0.3em] text-white/50 hover:text-white transition-colors duration-700 border border-white/5 px-6 py-3 rounded-md hover:bg-white/5 hover:border-white/10">Pilot Access</a>
+        
+        <!-- Desktop Nav Links -->
+        <div class="hidden md:flex items-center gap-8">
+            <a href="#problem" class="nav-link text-[10px] font-bold uppercase tracking-[0.25em] text-luxury-textmuted hover:text-luxury-text transition-colors duration-300">Problem</a>
+            <a href="#solution" class="nav-link text-[10px] font-bold uppercase tracking-[0.25em] text-luxury-textmuted hover:text-luxury-text transition-colors duration-300">Solution</a>
+            <a href="#why-it-works" class="nav-link text-[10px] font-bold uppercase tracking-[0.25em] text-luxury-textmuted hover:text-luxury-text transition-colors duration-300">Why It Works</a>
+            <a href="#apply" class="text-[10px] font-bold uppercase tracking-[0.3em] text-white bg-luxury-text hover:bg-black px-6 py-3 rounded transition-all duration-300">Become a Founding Partner</a>
         </div>
+
+        <!-- Mobile Hamburger -->
+        <button id="hamburgerBtn" class="md:hidden flex flex-col gap-1.5 p-2 cursor-pointer" aria-label="Open menu">
+            <span class="w-5 h-0.5 bg-luxury-text transition-all duration-300 hamburger-line-1"></span>
+            <span class="w-5 h-0.5 bg-luxury-text transition-all duration-300 hamburger-line-2"></span>
+            <span class="w-3.5 h-0.5 bg-luxury-text transition-all duration-300 hamburger-line-3"></span>
+        </button>
     </nav>
 
-    <!-- HERO SECTION -->
-    <header class="relative pt-40 md:pt-48 pb-32 px-6 overflow-hidden">
-        <!-- Background Image & Overlay -->
+    <!-- Mobile Menu Overlay -->
+    <div id="mobileMenu" class="mobile-menu fixed inset-0 z-[60] bg-white/98 backdrop-blur-xl flex flex-col items-center justify-center gap-8">
+        <button id="closeMobileMenu" class="absolute top-5 right-6 p-2 cursor-pointer" aria-label="Close menu">
+            <svg class="w-6 h-6 text-luxury-text" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+        <a href="#problem" class="mobile-nav-link text-sm font-bold uppercase tracking-[0.3em] text-luxury-text hover:text-luxury-emerald transition-colors">Problem</a>
+        <a href="#solution" class="mobile-nav-link text-sm font-bold uppercase tracking-[0.3em] text-luxury-text hover:text-luxury-emerald transition-colors">Solution</a>
+        <a href="#why-it-works" class="mobile-nav-link text-sm font-bold uppercase tracking-[0.3em] text-luxury-text hover:text-luxury-emerald transition-colors">Why It Works</a>
+        <a href="#faq" class="mobile-nav-link text-sm font-bold uppercase tracking-[0.3em] text-luxury-text hover:text-luxury-emerald transition-colors">FAQ</a>
+        <a href="#apply" class="mt-4 text-sm font-bold uppercase tracking-[0.3em] text-white bg-luxury-text hover:bg-black px-8 py-4 rounded transition-all duration-300">Become a Founding Partner</a>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- HERO SECTION — Simplified                    -->
+    <!-- ============================================ -->
+    <header class="relative pt-40 md:pt-48 pb-28 px-6 overflow-hidden bg-luxury-bg">
+        <!-- Background Image & Light Overlay -->
         <div class="absolute inset-0 z-0">
-            <img src="staffpulse_hero_bg.jpg" alt="Luxury Hotel Lobby" class="w-full h-full object-cover opacity-40 mix-blend-luminosity grayscale-[30%]">
-            <div class="absolute inset-0 bg-gradient-to-b from-[#0a0a0f] via-transparent to-[#0a0a0f]"></div>
-            <div class="absolute inset-0 bg-gradient-to-r from-[#0a0a0f] via-[#0a0a0f]/80 to-transparent"></div>
+            <img src="staffpulse_hero_bg_light.jpg" alt="Luxury Sunny Hotel Resort" class="w-full h-full object-cover opacity-80 mix-blend-multiply" loading="eager">
+            <div class="absolute inset-0 bg-gradient-to-r from-white via-white/80 to-transparent"></div>
+            <div class="absolute inset-0 bg-gradient-to-b from-white/30 via-transparent to-white"></div>
         </div>
 
         <div class="max-w-6xl mx-auto relative z-10 grid md:grid-cols-2 gap-12 items-center">
             
-            <!-- Left Column: Copy & CTA -->
+            <!-- Left Column: Copy & CTA (Simplified) -->
             <div class="text-left">
-                <div class="inline-flex items-center gap-4 glass-card text-luxury-emerald text-[9px] md:text-[10px] font-bold tracking-[0.3em] uppercase px-6 py-2.5 rounded mb-8 opacity-80">
-                    <span class="w-1 h-1 bg-luxury-emerald rounded-full"></span>
-                    Enterprise Reputation Engine
+                <div class="inline-flex items-center gap-4 bg-white/60 backdrop-blur border border-black/5 shadow-sm text-luxury-text text-[9px] md:text-[10px] font-bold tracking-[0.3em] uppercase px-6 py-2.5 rounded mb-8">
+                    <span class="w-1.5 h-1.5 bg-luxury-emerald rounded-full"></span>
+                    Founding Partner Program — 3 Spots Left
                 </div>
 
-                <div class="flex gap-1 mb-6">
-                    <!-- 5 Golden Stars -->
-                    <svg class="w-6 h-6 text-yellow-400 drop-shadow-[0_0_8px_rgba(250,204,21,0.5)]" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                    <svg class="w-6 h-6 text-yellow-400 drop-shadow-[0_0_8px_rgba(250,204,21,0.5)]" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                    <svg class="w-6 h-6 text-yellow-400 drop-shadow-[0_0_8px_rgba(250,204,21,0.5)]" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                    <svg class="w-6 h-6 text-yellow-400 drop-shadow-[0_0_8px_rgba(250,204,21,0.5)]" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                    <svg class="w-6 h-6 text-yellow-400 drop-shadow-[0_0_8px_rgba(250,204,21,0.5)]" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                </div>
-
-                <h1 class="font-serif text-5xl md:text-6xl lg:text-7xl text-white tracking-tight leading-[1.15] mb-8 font-medium">
+                <h1 class="font-serif text-5xl md:text-6xl lg:text-7xl text-luxury-text tracking-tight leading-[1.15] mb-8 font-medium">
                     Turn Your Staff's Daily Routine Into A <br class="hidden lg:inline">
                     <span class="text-transparent bg-clip-text bg-luxury-gradient">5-Star Review Engine.</span>
                 </h1>
 
-                <p class="text-lg text-gray-300 leading-relaxed mb-8 font-light">
-                    Stop losing direct bookings to OTA algorithms. Turn everyday guest interactions into your strongest marketing asset.
+                <p class="text-lg text-luxury-textmuted leading-relaxed mb-10 font-light max-w-lg">
+                    Protect your luxury brand and stop losing direct bookings to OTA algorithms. Turn everyday guest interactions into your strongest marketing asset.
                 </p>
 
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
-                    <!-- Metric Card 1 -->
-                    <div class="glass-card bg-white/5 border border-white/10 rounded-xl p-4 hover:bg-white/10 transition-colors group cursor-default">
-                        <div class="flex items-center gap-3 mb-2">
-                            <div class="bg-luxury-emerald/20 p-2 rounded-lg group-hover:scale-110 transition-transform">
-                                <svg class="w-5 h-5 text-luxury-emerald drop-shadow-[0_0_8px_rgba(16,185,129,0.5)]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg>
-                            </div>
-                            <span class="text-xl font-bold text-white">4.8+ Rating</span>
-                        </div>
-                        <p class="text-xs text-gray-400 font-light">Organically elevate Google & TripAdvisor scores</p>
-                    </div>
-
-                    <!-- Metric Card 2 -->
-                    <div class="glass-card bg-white/5 border border-white/10 rounded-xl p-4 hover:bg-white/10 transition-colors group cursor-default">
-                        <div class="flex items-center gap-3 mb-2">
-                            <div class="bg-luxury-emerald/20 p-2 rounded-lg group-hover:scale-110 transition-transform">
-                                <svg class="w-5 h-5 text-luxury-emerald drop-shadow-[0_0_8px_rgba(16,185,129,0.5)]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
-                            </div>
-                            <span class="text-xl font-bold text-white">Zero Risk</span>
-                        </div>
-                        <p class="text-xs text-gray-400 font-light">Intercept negative feedback before it goes public</p>
-                    </div>
-
-                    <!-- Metric Card 3 -->
-                    <div class="glass-card bg-white/5 border border-white/10 rounded-xl p-4 sm:col-span-2 hover:bg-white/10 transition-colors group cursor-default">
-                        <div class="flex items-center gap-4">
-                            <div class="bg-luxury-emerald/20 p-3 rounded-lg shrink-0 group-hover:scale-110 transition-transform">
-                                <svg class="w-6 h-6 text-luxury-emerald drop-shadow-[0_0_8px_rgba(16,185,129,0.5)]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
-                            </div>
-                            <div>
-                                <span class="block text-lg font-bold text-white">Boost Direct Bookings</span>
-                                <span class="text-sm text-gray-400 font-light">Outrank competitors and secure higher margins without OTA commissions.</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="flex flex-col items-start">
-                    <a href="#apply" class="relative group inline-flex items-center justify-center bg-luxury-emerald hover:bg-luxury-teal text-luxury-bg font-bold text-sm px-10 py-5 rounded-lg transition-all duration-700">
+                <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-10">
+                    <a href="#apply" class="relative group inline-flex items-center justify-center bg-luxury-text hover:bg-black text-white font-bold text-sm px-10 py-5 rounded-lg transition-all duration-500 shadow-[0_10px_30px_rgba(10,25,47,0.2)]">
                         <span class="relative z-10 flex items-center gap-3 tracking-[0.1em] uppercase text-xs">
-                            Apply for Pilot or Request Offer
+                            Apply as Founding Partner
                             <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                         </span>
-                        <div class="absolute inset-0 h-full w-full rounded-lg blur-md bg-luxury-gradient opacity-30 group-hover:opacity-60 transition-opacity duration-700"></div>
                     </a>
-                    
-                    <div class="mt-6 flex flex-wrap items-center gap-4 text-gray-400 text-sm">
-                        <div class="flex items-center gap-2 grayscale hover:grayscale-0 transition-all duration-300 opacity-60 hover:opacity-100 cursor-default">
-                            <img src="https://cdn.simpleicons.org/google" class="w-4 h-4" alt="Google" />
-                            <span class="font-bold text-white tracking-widest text-xs uppercase">Google</span>
-                        </div>
-                        <span class="w-1 h-1 bg-gray-600 rounded-full hidden sm:block"></span>
-                        <div class="flex items-center gap-2 grayscale hover:grayscale-0 transition-all duration-300 opacity-60 hover:opacity-100 cursor-default">
-                            <img src="https://cdn.simpleicons.org/tripadvisor/34E0A1" class="w-5 h-5" alt="TripAdvisor" />
-                            <span class="font-bold text-white tracking-widest text-xs uppercase">TripAdvisor</span>
-                        </div>
-                        <span class="w-1 h-1 bg-gray-600 rounded-full hidden sm:block"></span>
-                        <div class="flex items-center gap-2 grayscale hover:grayscale-0 transition-all duration-300 opacity-60 hover:opacity-100 cursor-default">
-                            <img src="https://cdn.simpleicons.org/bookingdotcom/006CE4" class="w-5 h-5" alt="Booking.com" />
-                            <span class="font-bold text-white tracking-widest text-xs uppercase">Booking.com</span>
-                        </div>
-                    </div>
+                    <span class="text-[10px] text-gray-500 font-semibold tracking-[0.15em] uppercase">Free 30-Day Pilot · Zero Risk</span>
+                </div>
 
-                    <p class="text-[10px] text-gray-500 mt-6 font-semibold tracking-[0.2em] uppercase opacity-90">Only 3 premium properties accepted this month</p>
+                <!-- Trust Bar -->
+                <div class="flex flex-wrap items-center gap-6 text-luxury-textmuted text-sm">
+                    <span class="text-[9px] font-bold tracking-[0.2em] uppercase text-gray-400">Works with:</span>
+                    <div class="flex items-center gap-2 grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100 cursor-default">
+                        <img src="https://cdn.simpleicons.org/google" class="w-4 h-4" alt="Google" loading="lazy" />
+                        <span class="font-bold tracking-widest text-[10px] uppercase">Google</span>
+                    </div>
+                    <span class="w-1 h-1 bg-gray-300 rounded-full hidden sm:block"></span>
+                    <div class="flex items-center gap-2 grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100 cursor-default">
+                        <img src="https://cdn.simpleicons.org/tripadvisor/34E0A1" class="w-5 h-5" alt="TripAdvisor" loading="lazy" />
+                        <span class="font-bold tracking-widest text-[10px] uppercase">TripAdvisor</span>
+                    </div>
+                    <span class="w-1 h-1 bg-gray-300 rounded-full hidden sm:block"></span>
+                    <div class="flex items-center gap-2 grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100 cursor-default">
+                        <img src="https://cdn.simpleicons.org/bookingdotcom/006CE4" class="w-5 h-5" alt="Booking.com" loading="lazy" />
+                        <span class="font-bold tracking-widest text-[10px] uppercase">Booking.com</span>
+                    </div>
                 </div>
             </div>
 
-            <!-- Right Column: Visual UI Mockups -->
+            <!-- Right Column: Visual UI Mockups (Light Theme) -->
             <div class="relative hidden md:block h-full min-h-[500px]">
                 
-                <!-- Glowing Ambient Orbs for Glassmorphism Background -->
-                <div class="absolute top-[20%] right-[15%] w-64 h-64 bg-luxury-emerald/30 blur-[80px] rounded-full pointer-events-none mix-blend-screen animate-pulse"></div>
-                <div class="absolute bottom-[20%] right-[35%] w-72 h-72 bg-luxury-teal/20 blur-[100px] rounded-full pointer-events-none mix-blend-screen" style="animation: pulse 8s cubic-bezier(0.4, 0, 0.6, 1) infinite;"></div>
+                <!-- Glowing Ambient Orbs - Light Mode -->
+                <div class="absolute top-[20%] right-[15%] w-64 h-64 bg-white/60 blur-[60px] rounded-full pointer-events-none mix-blend-overlay"></div>
+                <div class="absolute bottom-[20%] right-[35%] w-72 h-72 bg-luxury-gold/10 blur-[80px] rounded-full pointer-events-none"></div>
                 
                 <!-- Notification Card 1 (Positive) -->
                 <div class="absolute top-[15%] right-[5%] animate-float" style="animation-delay: 0s; z-index: 30;">
-                    <div class="bg-[#15151e]/80 backdrop-blur-xl w-72 lg:w-80 p-5 rounded-2xl border border-white/10 shadow-[0_20px_40px_rgba(0,0,0,0.5)] transform rotate-2 ring-1 ring-white/5">
+                    <div class="bg-white/95 backdrop-blur-xl w-72 lg:w-80 p-5 rounded-2xl border border-black/5 shadow-[0_20px_40px_rgba(0,0,0,0.08)] transform rotate-2">
                         <div class="flex items-center justify-between mb-3">
                             <div class="flex items-center gap-2">
-                                <div class="w-8 h-8 rounded-full bg-white flex items-center justify-center shadow-lg">
+                                <div class="w-8 h-8 rounded-full bg-white flex items-center justify-center shadow-sm border border-gray-100">
                                     <!-- Google G Logo SVG -->
-                                    <svg class="w-5 h-5" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+                                    <svg class="w-4 h-4" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
                                 </div>
-                                <span class="text-xs font-bold text-gray-100">New 5-Star Review</span>
+                                <span class="text-xs font-bold text-luxury-text">New 5-Star Review</span>
                             </div>
-                            <span class="text-[10px] text-gray-500 font-medium">Just now</span>
+                            <span class="text-[10px] text-gray-400 font-medium">Just now</span>
                         </div>
                         <div class="flex gap-0.5 mb-2">
-                            <svg class="w-4 h-4 text-yellow-400 drop-shadow-sm" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                            <svg class="w-4 h-4 text-yellow-400 drop-shadow-sm" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                            <svg class="w-4 h-4 text-yellow-400 drop-shadow-sm" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                            <svg class="w-4 h-4 text-yellow-400 drop-shadow-sm" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                            <svg class="w-4 h-4 text-yellow-400 drop-shadow-sm" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                            <svg class="w-4 h-4 text-luxury-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                            <svg class="w-4 h-4 text-luxury-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                            <svg class="w-4 h-4 text-luxury-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                            <svg class="w-4 h-4 text-luxury-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                            <svg class="w-4 h-4 text-luxury-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
                         </div>
-                        <p class="text-sm text-white font-medium mt-3">"Amazing service by Sarah at the front desk. Will return!"</p>
-                        <p class="text-[10px] text-gray-400 mt-2 font-light">— Michael T.</p>
+                        <p class="text-sm text-luxury-text font-medium mt-3">"Amazing service by Sarah at the front desk. Will return!"</p>
+                        <p class="text-[10px] text-gray-500 mt-2 font-light">— Michael T.</p>
                     </div>
                 </div>
 
                 <!-- Notification Card 2 (Intercepted) -->
                 <div class="absolute top-[35%] right-[25%] animate-float" style="animation-delay: -2s; z-index: 20;">
-                    <div class="bg-[#15151e]/90 backdrop-blur-xl w-64 lg:w-72 p-5 rounded-2xl border border-white/5 shadow-[0_20px_40px_rgba(0,0,0,0.5)] transform -rotate-3 ring-1 ring-white/5">
+                    <div class="bg-white/95 backdrop-blur-xl w-64 lg:w-72 p-5 rounded-2xl border border-black/5 shadow-[0_20px_40px_rgba(0,0,0,0.08)] transform -rotate-3">
                         <div class="flex items-center justify-between mb-3">
                             <div class="flex items-center gap-2">
-                                <div class="w-8 h-8 rounded-full bg-red-500/10 border border-red-500/30 flex items-center justify-center">
+                                <div class="w-8 h-8 rounded-full bg-red-50 flex items-center justify-center">
                                     <svg class="w-4 h-4 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
                                 </div>
-                                <span class="text-xs font-bold text-gray-200">Feedback Intercepted</span>
+                                <span class="text-xs font-bold text-luxury-text">Feedback Intercepted</span>
                             </div>
                         </div>
-                        <p class="text-[11px] text-red-400 font-medium mb-1">Issue reported: Room 402</p>
-                        <p class="text-xs text-gray-400 font-light">"The AC was a bit loud..."</p>
-                        <div class="mt-3 inline-flex items-center gap-1.5 bg-red-500/10 border border-red-500/20 text-red-400 text-[9px] px-2.5 py-1.5 rounded uppercase tracking-widest font-bold">
-                            <span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></span>
+                        <p class="text-[11px] text-red-600 font-medium mb-1">Issue reported: Room 402</p>
+                        <p class="text-xs text-gray-500 font-light">"The AC was a bit loud..."</p>
+                        <div class="mt-3 inline-flex items-center gap-1.5 bg-red-50 border border-red-100 text-red-600 text-[9px] px-2.5 py-1.5 rounded uppercase tracking-widest font-bold">
+                            <span class="w-1.5 h-1.5 rounded-full bg-red-500"></span>
                             Internal Resolution
                         </div>
                     </div>
@@ -243,15 +325,14 @@
                 
                 <!-- Gamification Card -->
                 <div class="absolute top-[60%] right-[10%] animate-float" style="animation-delay: -4s; z-index: 40;">
-                    <div class="bg-gradient-to-br from-[#15151e]/90 to-[#1a1a24]/90 backdrop-blur-xl w-56 lg:w-64 p-4 rounded-2xl border border-luxury-emerald/30 shadow-[0_20px_40px_rgba(0,0,0,0.6)] transform rotate-1 ring-1 ring-white/10 relative overflow-hidden">
-                        <div class="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-10 pointer-events-none"></div>
+                    <div class="bg-white/95 backdrop-blur-xl w-56 lg:w-64 p-4 rounded-2xl border border-luxury-emerald/20 shadow-[0_20px_40px_rgba(0,0,0,0.1)] transform rotate-1 relative overflow-hidden">
                         <div class="flex items-center gap-3 relative z-10">
-                            <div class="w-11 h-11 rounded-full bg-luxury-gradient flex items-center justify-center flex-shrink-0 shadow-lg shadow-luxury-emerald/20 border border-white/20">
-                                <span class="text-white font-bold text-base drop-shadow-md">#1</span>
+                            <div class="w-11 h-11 rounded-full bg-emerald-gradient flex items-center justify-center flex-shrink-0 shadow-lg shadow-luxury-emerald/20 text-white font-bold text-base">
+                                #1
                             </div>
                             <div>
                                 <p class="text-[9px] text-gray-400 uppercase tracking-widest font-bold mb-0.5">Leaderboard</p>
-                                <p class="text-sm font-semibold text-white">Sarah Jenkins</p>
+                                <p class="text-sm font-semibold text-luxury-text">Sarah Jenkins</p>
                                 <p class="text-[10px] text-luxury-emerald mt-0.5 font-medium">+12 Reviews This Week</p>
                             </div>
                         </div>
@@ -262,216 +343,535 @@
         </div>
     </header>
 
-    <!-- THE PROBLEM / FUNNEL ANALYSIS -->
-    <section class="max-w-6xl mx-auto px-6 py-32 border-t border-white/5 relative">
-        <div class="text-center mb-20">
-            <h2 class="text-[10px] font-bold uppercase tracking-[0.3em] text-gray-500 mb-4 opacity-70">Executive Financial Report</h2>
-            <p class="font-serif text-3xl md:text-4xl font-medium text-white">The Cost of Guest Silence: Lost Direct Bookings Analysis</p>
+    <!-- ============================================ -->
+    <!-- KEY METRICS — Moved from Hero                -->
+    <!-- ============================================ -->
+    <section class="max-w-6xl mx-auto px-6 -mt-14 relative z-20 mb-20 reveal">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6">
+            <!-- Metric Card 1 -->
+            <div class="glass-card rounded-xl p-6 hover:-translate-y-1 transition-transform duration-300 cursor-default">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-luxury-emerald/10 p-2.5 rounded-lg">
+                        <svg class="w-5 h-5 text-luxury-emerald" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg>
+                    </div>
+                    <span class="text-xl font-bold text-luxury-text">4.8+ Rating</span>
+                </div>
+                <p class="text-xs text-luxury-textmuted font-light">Organically elevate Google & TripAdvisor scores</p>
+            </div>
+
+            <!-- Metric Card 2 -->
+            <div class="glass-card rounded-xl p-6 hover:-translate-y-1 transition-transform duration-300 cursor-default">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-luxury-emerald/10 p-2.5 rounded-lg">
+                        <svg class="w-5 h-5 text-luxury-emerald" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                    </div>
+                    <span class="text-xl font-bold text-luxury-text">Zero Risk</span>
+                </div>
+                <p class="text-xs text-luxury-textmuted font-light">Intercept negative feedback before it goes public</p>
+            </div>
+
+            <!-- Metric Card 3 -->
+            <div class="glass-card rounded-xl p-6 hover:-translate-y-1 transition-transform duration-300 cursor-default">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-luxury-emerald/10 p-2.5 rounded-lg">
+                        <svg class="w-5 h-5 text-luxury-emerald" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
+                    </div>
+                    <span class="text-xl font-bold text-luxury-text">Boost Direct Bookings</span>
+                </div>
+                <p class="text-xs text-luxury-textmuted font-light">Outrank competitors, eliminate OTA commissions</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- THE PROBLEM / FUNNEL ANALYSIS                -->
+    <!-- ============================================ -->
+    <section id="problem" class="max-w-6xl mx-auto px-6 py-32 border-t border-gray-200 relative">
+        <div class="text-center mb-20 reveal">
+            <h2 class="text-[10px] font-bold uppercase tracking-[0.3em] text-gray-400 mb-4">Executive Financial Report</h2>
+            <p class="font-serif text-3xl md:text-4xl font-medium text-luxury-text">The Cost of Guest Silence: Lost Direct Bookings</p>
         </div>
 
         <div class="grid md:grid-cols-2 gap-6 md:gap-10">
             <!-- Left Card: The Email Loop -->
-            <div class="glass-card p-10 md:p-14 rounded-xl relative overflow-hidden border-white/5">
-                <h3 class="text-[10px] font-bold text-gray-400 mb-12 tracking-[0.3em] uppercase">Reputation Leakage (Traditional Email Loop)</h3>
+            <div class="glass-card p-10 md:p-14 rounded-xl relative overflow-hidden reveal">
+                <h3 class="text-[10px] font-bold text-gray-500 mb-12 tracking-[0.3em] uppercase">Reputation Leakage (Traditional Loop)</h3>
                 
                 <div class="flex flex-col items-center">
-                    <div class="border border-white/10 px-8 py-4 rounded w-full max-w-sm text-center">
-                        <span class="text-lg font-medium text-gray-200 tracking-wide">1,000 Happy Guests</span>
+                    <div class="border border-gray-200 bg-gray-50 px-8 py-4 rounded w-full max-w-sm text-center shadow-sm">
+                        <span class="text-lg font-medium text-luxury-text tracking-wide">1,000 Happy Guests</span>
                     </div>
                     
                     <div class="flex flex-col items-center my-6">
-                        <div class="h-12 border-l border-dashed border-gray-600 relative">
-                            <div class="absolute -bottom-1 -left-1 w-2 h-2 border-b border-r border-gray-600 transform rotate-45"></div>
+                        <div class="h-12 border-l border-dashed border-gray-300 relative">
+                            <div class="absolute -bottom-1 -left-1 w-2 h-2 border-b border-r border-gray-300 transform rotate-45"></div>
                         </div>
                         <div class="text-center mt-4 text-[11px] text-gray-500 tracking-widest uppercase">
-                            <span class="block mb-1">Traditional Post-Stay Email</span>
+                            <span class="block mb-1 font-semibold">Traditional Post-Stay Email</span>
                             <span class="text-gray-400">(2% conversion)</span>
                         </div>
                     </div>
                     
-                    <div class="border border-white/10 bg-white/[0.02] px-8 py-8 rounded w-full mt-4 text-center">
-                        <h4 class="text-2xl font-serif text-red-500 font-semibold mb-4 drop-shadow-[0_0_8px_rgba(239,68,68,0.3)]">Only 20 reviews generated</h4>
-                        <p class="text-sm text-gray-400 leading-loose font-light">
-                            The remaining <strong class="text-red-400 font-semibold">980 guests (98%)</strong> leave in silence, failing to build your property's online visibility and competitive advantage.
+                    <div class="border border-red-100 bg-red-50 px-8 py-8 rounded w-full mt-4 text-center">
+                        <h4 class="text-2xl font-serif text-red-600 font-semibold mb-4">Only 20 reviews generated</h4>
+                        <p class="text-sm text-gray-600 leading-loose font-light">
+                            The remaining <strong class="text-red-600 font-semibold">980 guests (98%)</strong> leave in silence, failing to build your property's online visibility.
                         </p>
                     </div>
                 </div>
             </div>
 
             <!-- Right Card: Financial Impact -->
-            <div class="glass-card p-10 md:p-14 rounded-xl relative overflow-hidden border-white/5">
-                <h3 class="text-[10px] font-bold text-gray-400 mb-10 tracking-[0.3em] uppercase">Financial & Algorithmic Cost</h3>
+            <div class="glass-card p-10 md:p-14 rounded-xl relative overflow-hidden reveal" style="transition-delay: 0.15s;">
+                <h3 class="text-[10px] font-bold text-gray-500 mb-10 tracking-[0.3em] uppercase">Financial & Algorithmic Cost</h3>
                 
                 <div class="mb-12">
-                    <span class="text-5xl md:text-6xl font-serif text-red-500 font-semibold tracking-tight drop-shadow-[0_0_15px_rgba(239,68,68,0.3)]">-15% Direct Bookings</span>
+                    <span class="text-5xl md:text-6xl font-serif text-red-600 font-semibold tracking-tight">-15% Direct Bookings</span>
                 </div>
                 
-                <div class="border-l border-l-white/20 pl-8">
-                    <h4 class="text-sm font-semibold text-white mb-4 tracking-[0.1em] uppercase">Algorithm Drop Penalty:</h4>
-                    <p class="text-sm text-gray-400 leading-loose font-light mb-6">
-                        When your average score drops from <strong class="text-red-400 font-semibold">4.3 to 3.9</strong>, Booking.com and TripAdvisor algorithms immediately push your property to the second page of search results.
+                <div class="border-l-2 border-l-gray-200 pl-8">
+                    <h4 class="text-sm font-semibold text-luxury-text mb-4 tracking-[0.1em] uppercase">Algorithm Drop Penalty:</h4>
+                    <p class="text-sm text-gray-600 leading-loose font-light mb-6">
+                        When your average score drops from <strong class="text-red-600 font-semibold">4.3 to 3.9</strong>, Booking.com and TripAdvisor algorithms immediately push your property to the second page of search results.
                     </p>
-                    <p class="text-sm text-gray-400 leading-loose font-light">
-                        This signifies a forced dependency on high OTA commissions <strong class="text-red-400 font-semibold">(15-22%)</strong> to maintain occupancy rates.
+                    <p class="text-sm text-gray-600 leading-loose font-light">
+                        This signifies a forced dependency on high OTA commissions <strong class="text-red-600 font-semibold">(15-22%)</strong> to maintain occupancy rates.
                     </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Inline CTA after Problem -->
+        <div class="text-center mt-16 reveal">
+            <a href="#apply" class="inline-flex items-center gap-3 text-luxury-emerald hover:text-luxury-text font-bold text-sm tracking-[0.1em] uppercase transition-colors duration-300 group">
+                See how StaffPulse fixes this
+                <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- ROI IMPACT PROJECTION                        -->
+    <!-- ============================================ -->
+    <section class="bg-white border-y border-gray-200 py-24 overflow-hidden">
+        <div class="max-w-5xl mx-auto px-6 reveal">
+            <div class="text-center mb-16">
+                <h2 class="text-[10px] font-bold uppercase tracking-[0.3em] text-gray-400 mb-4">Industry Research</h2>
+                <h3 class="font-serif text-3xl md:text-4xl font-medium text-luxury-text leading-tight">
+                    What a 0.5★ Improvement Means for Your Property
+                </h3>
+                <p class="text-gray-500 font-light mt-4 max-w-xl mx-auto text-sm">Based on peer-reviewed hospitality research and industry benchmarks</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center p-8 border border-gray-100 rounded-xl bg-gray-50/50 hover:shadow-lg transition-shadow duration-300">
+                    <div class="text-4xl md:text-5xl font-serif text-luxury-emerald font-semibold mb-4">+9%</div>
+                    <p class="text-sm font-semibold text-luxury-text mb-2">Revenue Per Room</p>
+                    <p class="text-xs text-gray-500 font-light leading-relaxed">A 0.5-star increase on review platforms translates to +9% RevPAR</p>
+                    <p class="text-[9px] text-gray-400 mt-3 italic">Cornell University Hospitality Study</p>
+                </div>
+
+                <div class="text-center p-8 border border-luxury-emerald/20 rounded-xl bg-luxury-emerald/[0.02] hover:shadow-lg transition-shadow duration-300 relative">
+                    <div class="absolute top-3 right-3 text-[8px] font-bold tracking-widest uppercase text-luxury-emerald bg-luxury-emerald/10 px-2 py-1 rounded">Key Insight</div>
+                    <div class="text-4xl md:text-5xl font-serif text-luxury-emerald font-semibold mb-4">8-12×</div>
+                    <p class="text-sm font-semibold text-luxury-text mb-2">More Reviews</p>
+                    <p class="text-xs text-gray-500 font-light leading-relaxed">In-stay QR feedback captures 8-12× more reviews than post-stay emails</p>
+                    <p class="text-[9px] text-gray-400 mt-3 italic">Hospitality Industry Research</p>
+                </div>
+
+                <div class="text-center p-8 border border-gray-100 rounded-xl bg-gray-50/50 hover:shadow-lg transition-shadow duration-300">
+                    <div class="text-4xl md:text-5xl font-serif text-luxury-emerald font-semibold mb-4">68%</div>
+                    <p class="text-sm font-semibold text-luxury-text mb-2">Will Leave a Review</p>
+                    <p class="text-xs text-gray-500 font-light leading-relaxed">When asked at the right moment — during peak satisfaction, not days later</p>
+                    <p class="text-[9px] text-gray-400 mt-3 italic">GuestRevu Data</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- THE SOLUTION / THE BLUEPRINT -->
-    <section class="relative bg-luxury-card border-y border-white/5 py-32 overflow-hidden">
-        <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4wMikiLz48L3N2Zz4=')] opacity-50"></div>
+    <!-- ============================================ -->
+    <!-- THE SOLUTION / THE BLUEPRINT                 -->
+    <!-- ============================================ -->
+    <section id="solution" class="relative bg-luxury-bg py-32 overflow-hidden">
         
         <div class="max-w-6xl mx-auto px-6 relative z-10">
             
-            <div class="text-center mb-20">
-                <h2 class="text-[10px] font-bold uppercase tracking-[0.3em] text-luxury-emerald mb-4 opacity-80">The Blueprint</h2>
-                <h3 class="font-serif text-3xl md:text-5xl font-medium text-white leading-tight">
+            <div class="text-center mb-20 reveal">
+                <h2 class="text-[10px] font-bold uppercase tracking-[0.3em] text-luxury-emerald mb-4">The Blueprint</h2>
+                <h3 class="font-serif text-3xl md:text-5xl font-medium text-luxury-text leading-tight">
                     The 4-Second Interaction That Protects Your Revenue.
                 </h3>
             </div>
 
             <!-- Full Width Image Container -->
-            <div class="mb-24 relative max-w-5xl mx-auto">
-                <div class="absolute inset-0 bg-luxury-emerald/5 blur-[120px] z-0"></div>
-                <div class="relative z-10 glass-card p-1 rounded-xl animate-float shadow-[0_20px_60px_-15px_rgba(0,0,0,0.5)] border-white/5">
-                    <div class="bg-luxury-bg rounded-lg overflow-hidden border border-white/5 relative">
+            <div class="mb-24 relative max-w-5xl mx-auto reveal">
+                <div class="relative z-10 bg-white p-2 rounded-xl shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] border border-gray-100">
+                    <div class="rounded-lg overflow-hidden relative">
                         <!-- Premium Image Integration -->
-                        <img src="staffpulse_image.png" alt="StaffPulse QR Scanning Mechanism" onclick="openImageModal(this.src)" class="w-full h-auto object-cover opacity-80 hover:opacity-100 transition-all duration-1000 grayscale-[20%] hover:grayscale-0 cursor-pointer">
+                        <img src="staffpulse_image.png" alt="StaffPulse QR Scanning Mechanism" onclick="openImageModal(this.src)" class="w-full h-auto object-cover opacity-90 hover:opacity-100 transition-all duration-700 cursor-pointer" loading="lazy">
                     </div>
                 </div>
                 <!-- Reassuring text -->
-                <p class="text-center text-xs text-gray-500 mt-8 tracking-widest uppercase opacity-60">IT Integration is not required. Operates independently of your PMS.</p>
+                <p class="text-center text-xs text-gray-400 mt-8 tracking-widest uppercase font-semibold">IT Integration is not required. Operates independently of your PMS.</p>
             </div>
             
             <!-- 3 Steps Grid -->
             <div class="grid md:grid-cols-3 gap-10 mb-16">
-                <div class="border-t border-t-white/10 pt-8">
-                    <div class="text-[10px] font-bold text-gray-500 mb-4 tracking-[0.2em]">01</div>
-                    <h4 class="text-lg font-serif text-white mb-4">The Physical Touchpoint</h4>
-                    <p class="text-gray-400 font-light text-sm leading-loose">Guests scan a luxurious, personalized QR code presented by your staff at the pool bar, restaurant, or reception immediately after a great interaction.</p>
+                <div class="border-t border-gray-200 pt-8 reveal">
+                    <div class="text-[10px] font-bold text-gray-400 mb-4 tracking-[0.2em]">01</div>
+                    <h4 class="text-lg font-serif text-luxury-text mb-4">The Physical Touchpoint</h4>
+                    <p class="text-gray-600 font-light text-sm leading-loose">Guests scan a luxurious, personalized QR code presented by your staff at the pool bar, restaurant, or reception immediately after a great interaction.</p>
                 </div>
 
-                <div class="border-t border-t-luxury-emerald/50 pt-8 relative">
+                <div class="border-t-2 border-luxury-emerald pt-8 relative reveal" style="transition-delay: 0.1s;">
                     <div class="text-[10px] font-bold text-luxury-emerald mb-4 tracking-[0.2em]">02</div>
-                    <h4 class="text-lg font-serif text-gray-200 mb-4">The Smart Routing Filter</h4>
-                    <p class="text-gray-400 font-light text-sm leading-loose">Our Link-Shield Engine analyzes sentiment instantly. Thrilled guests are routed in exactly 1-click to leave 5 stars on TripAdvisor or Google.</p>
+                    <h4 class="text-lg font-serif text-luxury-text mb-4">The Smart Routing Filter</h4>
+                    <p class="text-gray-600 font-light text-sm leading-loose">Our Link-Shield Engine analyzes sentiment instantly. Thrilled guests are routed in exactly 1-click to leave 5 stars on TripAdvisor or Google.</p>
                 </div>
 
-                <div class="border-t border-t-white/10 pt-8">
-                    <div class="text-[10px] font-bold text-gray-500 mb-4 tracking-[0.2em]">03</div>
-                    <h4 class="text-lg font-serif text-white mb-4 flex items-center gap-2">
+                <div class="border-t border-gray-200 pt-8 reveal" style="transition-delay: 0.2s;">
+                    <div class="text-[10px] font-bold text-gray-400 mb-4 tracking-[0.2em]">03</div>
+                    <h4 class="text-lg font-serif text-luxury-text mb-4 flex items-center gap-2">
                         Live Damage Control
-                        <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                        <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
                     </h4>
-                    <p class="text-gray-400 font-light text-sm leading-loose">Negative feedback is trapped internally. An automated alert is sent to the Shift Manager to resolve the issue on-site before the guest departs.</p>
+                    <p class="text-gray-600 font-light text-sm leading-loose">Negative feedback is trapped internally. An automated alert is sent to the Shift Manager to resolve the issue on-site before the guest departs.</p>
                 </div>
             </div>
 
             <!-- Staff Advantage Callout -->
-            <div class="py-10 px-8 border-y border-white/5 max-w-4xl mx-auto text-center mt-12">
-                <h5 class="text-xs tracking-[0.3em] uppercase text-gray-400 font-bold mb-4">Zero Management Overhead</h5>
-                <p class="text-sm text-gray-400 font-light leading-loose max-w-2xl mx-auto">
+            <div class="py-10 px-8 border border-gray-100 bg-gray-50 rounded-xl max-w-4xl mx-auto text-center mt-12 shadow-sm reveal">
+                <h5 class="text-xs tracking-[0.3em] uppercase text-luxury-text font-bold mb-4">Zero Management Overhead</h5>
+                <p class="text-sm text-gray-600 font-light leading-loose max-w-2xl mx-auto">
                     Powered by gamification. Your staff eagerly drives this process because they compete for the "Employee of the Week" bonus on the transparent back-office leaderboard.
                 </p>
+            </div>
+
+            <!-- Inline CTA after Blueprint -->
+            <div class="text-center mt-16 reveal">
+                <a href="#apply" class="inline-flex items-center gap-3 bg-luxury-text hover:bg-black text-white font-bold text-xs px-8 py-4 rounded-lg transition-all duration-300 tracking-[0.1em] uppercase group shadow-[0_10px_30px_rgba(10,25,47,0.15)]">
+                    Become a Founding Partner
+                    <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                </a>
             </div>
 
         </div>
     </section>
 
-    <!-- FORM SECTION -->
-    <section id="apply" class="py-32 px-6 relative">
+    <!-- ============================================ -->
+    <!-- WHY IT WORKS — Pre-Launch Credibility         -->
+    <!-- ============================================ -->
+    <section id="why-it-works" class="bg-white border-y border-gray-200 py-32 overflow-hidden">
+        <div class="max-w-6xl mx-auto px-6">
+            
+            <div class="text-center mb-20 reveal">
+                <h2 class="text-[10px] font-bold uppercase tracking-[0.3em] text-luxury-emerald mb-4">Why It Works</h2>
+                <h3 class="font-serif text-3xl md:text-4xl font-medium text-luxury-text leading-tight">
+                    The Science Behind the 4-Second Window
+                </h3>
+                <p class="text-gray-500 font-light mt-4 max-w-2xl mx-auto">Our methodology is grounded in behavioral psychology and validated by hospitality industry data.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-10 mb-20">
+                <!-- Methodology Proof -->
+                <div class="glass-card p-10 rounded-xl reveal">
+                    <div class="flex items-center gap-3 mb-8">
+                        <div class="bg-luxury-emerald/10 p-3 rounded-lg">
+                            <svg class="w-6 h-6 text-luxury-emerald" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
+                        </div>
+                        <h4 class="text-lg font-serif text-luxury-text">The Psychology of Timing</h4>
+                    </div>
+                    <div class="space-y-6">
+                        <div class="flex gap-4">
+                            <div class="w-2 h-2 mt-2 bg-red-400 rounded-full flex-shrink-0"></div>
+                            <div>
+                                <p class="text-sm font-semibold text-luxury-text mb-1">Post-Stay Email (2% conversion)</p>
+                                <p class="text-xs text-gray-500 font-light">Guest is home, unpacked, back to routine. Emotional peak is gone. Your email competes with 47 others.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="w-2 h-2 mt-2 bg-luxury-emerald rounded-full flex-shrink-0"></div>
+                            <div>
+                                <p class="text-sm font-semibold text-luxury-text mb-1">In-Stay QR Moment (8-12× more reviews)</p>
+                                <p class="text-xs text-gray-500 font-light">Guest just received exceptional service. Emotional peak. One scan, two taps — the review is live before the cocktail arrives.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Technology & Trust -->
+                <div class="glass-card p-10 rounded-xl reveal" style="transition-delay: 0.15s;">
+                    <div class="flex items-center gap-3 mb-8">
+                        <div class="bg-luxury-emerald/10 p-3 rounded-lg">
+                            <svg class="w-6 h-6 text-luxury-emerald" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                        </div>
+                        <h4 class="text-lg font-serif text-luxury-text">Enterprise-Grade Technology</h4>
+                    </div>
+                    <div class="space-y-5">
+                        <div class="flex items-start gap-3">
+                            <svg class="w-4 h-4 text-luxury-emerald mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <div>
+                                <p class="text-sm font-medium text-luxury-text">Link-Shield Engine</p>
+                                <p class="text-xs text-gray-500 font-light">Dynamic URL routing — QR codes work forever, even if Google changes their link structure overnight.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <svg class="w-4 h-4 text-luxury-emerald mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <div>
+                                <p class="text-sm font-medium text-luxury-text">Anti-Fraud Protection</p>
+                                <p class="text-xs text-gray-500 font-light">Device fingerprinting ensures staff cannot artificially inflate ratings. Every review is genuine.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <svg class="w-4 h-4 text-luxury-emerald mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <div>
+                                <p class="text-sm font-medium text-luxury-text">Zero IT Integration</p>
+                                <p class="text-xs text-gray-500 font-light">Operates independently of your PMS. No server changes, no API keys, no IT tickets.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <svg class="w-4 h-4 text-luxury-emerald mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <div>
+                                <p class="text-sm font-medium text-luxury-text">GDPR Compliant</p>
+                                <p class="text-xs text-gray-500 font-light">No guest personal data is stored. QR code interaction is fully anonymous and consent-free.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Founding Partner Block -->
+            <div class="max-w-4xl mx-auto bg-gradient-to-br from-luxury-text to-[#1E3A8A] rounded-2xl p-10 md:p-14 text-white relative overflow-hidden reveal">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/2"></div>
+                <div class="relative z-10">
+                    <div class="inline-flex items-center gap-2 bg-white/10 text-[9px] font-bold tracking-[0.3em] uppercase px-4 py-2 rounded mb-6">
+                        <span class="w-1.5 h-1.5 bg-luxury-gold rounded-full"></span>
+                        Exclusive Opportunity
+                    </div>
+                    <h4 class="font-serif text-2xl md:text-3xl font-medium mb-4">Become a Founding Partner</h4>
+                    <p class="text-white/70 font-light leading-relaxed mb-6 max-w-2xl">
+                        We're selecting exactly <strong class="text-white font-semibold">3 premium properties</strong> to co-create StaffPulse with us. As a Founding Partner, you receive the full system free for 30 days — and your feedback shapes the product for the entire hospitality industry.
+                    </p>
+                    <p class="text-white/50 text-xs font-light">
+                        This isn't a free trial. It's an invitation to pioneer the future of hotel reputation management — and be the first case study when we launch publicly.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- FAQ SECTION                                  -->
+    <!-- ============================================ -->
+    <section id="faq" class="max-w-4xl mx-auto px-6 py-32">
+        <div class="text-center mb-16 reveal">
+            <h2 class="text-[10px] font-bold uppercase tracking-[0.3em] text-gray-400 mb-4">Frequently Asked</h2>
+            <h3 class="font-serif text-3xl md:text-4xl font-medium text-luxury-text">Questions from General Managers</h3>
+        </div>
+
+        <div class="space-y-4 reveal">
+            <!-- FAQ Item 1 -->
+            <div class="border border-gray-200 rounded-xl overflow-hidden bg-white">
+                <button class="faq-toggle w-full flex items-center justify-between p-6 text-left cursor-pointer hover:bg-gray-50 transition-colors" onclick="toggleFaq(this)">
+                    <span class="text-sm font-semibold text-luxury-text pr-4">Does this require any IT integration or changes to our PMS?</span>
+                    <svg class="faq-chevron w-5 h-5 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div class="faq-answer">
+                    <div class="px-6 pb-6">
+                        <p class="text-sm text-gray-600 font-light leading-relaxed">Absolutely not. StaffPulse operates entirely independently of your property management system. There are no API integrations, no server changes, and no IT tickets required. Your IT team doesn't need to be involved at all.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ Item 2 -->
+            <div class="border border-gray-200 rounded-xl overflow-hidden bg-white">
+                <button class="faq-toggle w-full flex items-center justify-between p-6 text-left cursor-pointer hover:bg-gray-50 transition-colors" onclick="toggleFaq(this)">
+                    <span class="text-sm font-semibold text-luxury-text pr-4">Won't my staff resist or sabotage this?</span>
+                    <svg class="faq-chevron w-5 h-5 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div class="faq-answer">
+                    <div class="px-6 pb-6">
+                        <p class="text-sm text-gray-600 font-light leading-relaxed">The opposite happens. StaffPulse uses gamification — bartenders, waiters, and receptionists compete for "Employee of the Week" status and bonuses on a transparent leaderboard. They actively <em>want</em> guests to scan their personal QR code because it directly benefits them. You don't need to monitor or enforce anything.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ Item 3 -->
+            <div class="border border-gray-200 rounded-xl overflow-hidden bg-white">
+                <button class="faq-toggle w-full flex items-center justify-between p-6 text-left cursor-pointer hover:bg-gray-50 transition-colors" onclick="toggleFaq(this)">
+                    <span class="text-sm font-semibold text-luxury-text pr-4">What happens after the 30-day pilot?</span>
+                    <svg class="faq-chevron w-5 h-5 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div class="faq-answer">
+                    <div class="px-6 pb-6">
+                        <p class="text-sm text-gray-600 font-light leading-relaxed">After 30 days, you'll see measurable results in your review volume and ratings. At that point, you decide: continue with a tailored subscription, or walk away with zero cost and zero obligation. There are no contracts, no hidden fees, and no cancellation penalties. As a Founding Partner, you also receive preferential pricing locked in permanently.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ Item 4 -->
+            <div class="border border-gray-200 rounded-xl overflow-hidden bg-white">
+                <button class="faq-toggle w-full flex items-center justify-between p-6 text-left cursor-pointer hover:bg-gray-50 transition-colors" onclick="toggleFaq(this)">
+                    <span class="text-sm font-semibold text-luxury-text pr-4">Is this GDPR compliant?</span>
+                    <svg class="faq-chevron w-5 h-5 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div class="faq-answer">
+                    <div class="px-6 pb-6">
+                        <p class="text-sm text-gray-600 font-light leading-relaxed">Yes, fully. StaffPulse does not collect, store, or process any guest personal data. The QR interaction is anonymous — guests voluntarily choose to leave a review on a public platform (Google, TripAdvisor) using their own accounts. No consent forms or cookie banners are needed.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ Item 5 -->
+            <div class="border border-gray-200 rounded-xl overflow-hidden bg-white">
+                <button class="faq-toggle w-full flex items-center justify-between p-6 text-left cursor-pointer hover:bg-gray-50 transition-colors" onclick="toggleFaq(this)">
+                    <span class="text-sm font-semibold text-luxury-text pr-4">How fast is the setup?</span>
+                    <svg class="faq-chevron w-5 h-5 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div class="faq-answer">
+                    <div class="px-6 pb-6">
+                        <p class="text-sm text-gray-600 font-light leading-relaxed">48 hours from approval. We design your custom QR materials, configure the routing to your Google & TripAdvisor profiles, set up the staff leaderboard, and ship everything to your property. Your team receives a 15-minute briefing — and the system goes live.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ Item 6 -->
+            <div class="border border-gray-200 rounded-xl overflow-hidden bg-white">
+                <button class="faq-toggle w-full flex items-center justify-between p-6 text-left cursor-pointer hover:bg-gray-50 transition-colors" onclick="toggleFaq(this)">
+                    <span class="text-sm font-semibold text-luxury-text pr-4">What if Google or TripAdvisor changes their link structure?</span>
+                    <svg class="faq-chevron w-5 h-5 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div class="faq-answer">
+                    <div class="px-6 pb-6">
+                        <p class="text-sm text-gray-600 font-light leading-relaxed">Our Link-Shield Engine uses dynamic URL routing. QR codes printed for your property will work indefinitely — even if Google or TripAdvisor completely restructure their review URLs. The redirect is managed server-side, so updates happen instantly without reprinting a single card.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- FORM SECTION — Optimized                     -->
+    <!-- ============================================ -->
+    <section id="apply" class="py-32 px-6 relative bg-white border-t border-gray-200">
         <div class="max-w-3xl mx-auto relative z-10">
             
-            <div class="text-center mb-20">
-                <h2 class="font-serif text-4xl md:text-5xl font-medium text-white mb-8">Get Started with StaffPulse.eu</h2>
-                <p class="text-gray-400 text-lg max-w-2xl mx-auto font-light leading-loose">
-                    Apply for our exclusive, 100% free 30-day pilot program (limited to 3 properties this month), or simply request a customized presentation and pricing deck tailored for your hotel.
+            <div class="text-center mb-12 reveal">
+                <h2 class="font-serif text-4xl md:text-5xl font-medium text-luxury-text mb-6">Apply as a Founding Partner</h2>
+                <p class="text-gray-600 text-lg max-w-2xl mx-auto font-light leading-relaxed">
+                    We're accepting <strong class="text-luxury-text font-semibold">3 premium properties</strong> this month for our free 30-day Founding Partner program. Submit your application below.
                 </p>
             </div>
 
-            <div class="glass-card rounded-sm p-8 md:p-16 relative overflow-hidden border-white/5">
-                <form action="https://formspree.io/f/mojgqlza" method="POST" class="relative z-10">
+            <!-- What Happens Next Timeline -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-0 mb-16 reveal">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-full bg-luxury-emerald/10 flex items-center justify-center text-luxury-emerald font-bold text-xs">1</div>
+                    <span class="text-xs font-medium text-luxury-text">Application Review</span>
+                </div>
+                <div class="hidden sm:block w-12 h-px bg-gray-300 mx-2"></div>
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-full bg-luxury-emerald/10 flex items-center justify-center text-luxury-emerald font-bold text-xs">2</div>
+                    <span class="text-xs font-medium text-luxury-text">Free Reputation Audit</span>
+                </div>
+                <div class="hidden sm:block w-12 h-px bg-gray-300 mx-2"></div>
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-full bg-luxury-emerald/10 flex items-center justify-center text-luxury-emerald font-bold text-xs">3</div>
+                    <span class="text-xs font-medium text-luxury-text">Live in 48 Hours</span>
+                </div>
+            </div>
+
+            <!-- Form -->
+            <div id="formContainer" class="bg-white shadow-[0_20px_50px_rgba(0,0,0,0.05)] border border-gray-100 rounded-lg p-8 md:p-16 relative overflow-hidden reveal">
+                <form id="applicationForm" action="https://formspree.io/f/mojgqlza" method="POST" class="relative z-10">
                     
                     <div class="space-y-12 mb-16">
                         <div>
-                            <label class="block text-[10px] font-bold text-gray-500 uppercase tracking-[0.3em] mb-4 opacity-80">Your Primary Interest</label>
+                            <label class="block text-[10px] font-bold text-gray-400 uppercase tracking-[0.3em] mb-4">Your Primary Interest</label>
                             <div class="grid md:grid-cols-2 gap-4">
-                                <label class="flex items-center gap-3 p-4 border border-white/10 rounded-sm cursor-pointer transition-all duration-300 hover:border-white/30 has-[:checked]:border-luxury-emerald has-[:checked]:bg-luxury-emerald/10">
+                                <label class="flex items-center gap-3 p-4 border border-gray-200 rounded cursor-pointer transition-all duration-300 hover:border-luxury-emerald/50 has-[:checked]:border-luxury-emerald has-[:checked]:bg-luxury-emerald/5">
                                     <div class="relative flex items-center justify-center">
-                                        <input type="radio" name="interest" value="pilot" checked class="peer appearance-none w-4 h-4 border border-gray-500 rounded-full checked:border-luxury-emerald cursor-pointer transition-colors">
-                                        <div class="absolute w-2 h-2 bg-luxury-emerald rounded-full opacity-0 peer-checked:opacity-100 transition-opacity pointer-events-none"></div>
+                                        <input type="radio" name="interest" value="pilot" checked class="peer appearance-none w-5 h-5 border border-gray-300 rounded-full checked:border-luxury-emerald cursor-pointer transition-colors">
+                                        <div class="absolute w-2.5 h-2.5 bg-luxury-emerald rounded-full opacity-0 peer-checked:opacity-100 transition-opacity pointer-events-none"></div>
                                     </div>
-                                    <span class="text-sm text-gray-300 font-light peer-checked:text-white">Apply for the Free 30-Day Pilot</span>
+                                    <span class="text-sm text-gray-700 font-medium">Apply for the Free 30-Day Pilot</span>
                                 </label>
                                 
-                                <label class="flex items-center gap-3 p-4 border border-white/10 rounded-sm cursor-pointer transition-all duration-300 hover:border-white/30 has-[:checked]:border-luxury-emerald has-[:checked]:bg-luxury-emerald/10">
+                                <label class="flex items-center gap-3 p-4 border border-gray-200 rounded cursor-pointer transition-all duration-300 hover:border-luxury-emerald/50 has-[:checked]:border-luxury-emerald has-[:checked]:bg-luxury-emerald/5">
                                     <div class="relative flex items-center justify-center">
-                                        <input type="radio" name="interest" value="offer" class="peer appearance-none w-4 h-4 border border-gray-500 rounded-full checked:border-luxury-emerald cursor-pointer transition-colors">
-                                        <div class="absolute w-2 h-2 bg-luxury-emerald rounded-full opacity-0 peer-checked:opacity-100 transition-opacity pointer-events-none"></div>
+                                        <input type="radio" name="interest" value="offer" class="peer appearance-none w-5 h-5 border border-gray-300 rounded-full checked:border-luxury-emerald cursor-pointer transition-colors">
+                                        <div class="absolute w-2.5 h-2.5 bg-luxury-emerald rounded-full opacity-0 peer-checked:opacity-100 transition-opacity pointer-events-none"></div>
                                     </div>
-                                    <span class="text-sm text-gray-300 font-light peer-checked:text-white">Request Custom Offer & Pricing</span>
+                                    <span class="text-sm text-gray-700 font-medium">Request Custom Offer & Pricing</span>
                                 </label>
                             </div>
                         </div>
 
                         <div>
-                            <label class="block text-[10px] font-bold text-gray-500 uppercase tracking-[0.3em] mb-2 opacity-80">General Manager / Director Name</label>
+                            <label class="block text-[10px] font-bold text-gray-400 uppercase tracking-[0.3em] mb-2">General Manager / Director Name</label>
                             <input type="text" name="manager_name" required
-                                class="w-full px-0 py-4 bg-transparent border-b border-white/10 rounded-none focus:outline-none focus:border-white text-white transition-all duration-700 placeholder:text-gray-700 font-light text-lg"
+                                class="w-full px-0 py-4 bg-transparent border-b border-gray-200 rounded-none focus:outline-none focus:border-luxury-text text-luxury-text transition-all duration-300 placeholder:text-gray-300 font-light text-lg"
                                 placeholder="e.g. John Doe">
                         </div>
 
                         <div>
-                            <label class="block text-[10px] font-bold text-gray-500 uppercase tracking-[0.3em] mb-2 opacity-80">Property Name & Location</label>
+                            <label class="block text-[10px] font-bold text-gray-400 uppercase tracking-[0.3em] mb-2">Property Name & Location</label>
                             <input type="text" name="hotel_name" required
-                                class="w-full px-0 py-4 bg-transparent border-b border-white/10 rounded-none focus:outline-none focus:border-white text-white transition-all duration-700 placeholder:text-gray-700 font-light text-lg"
+                                class="w-full px-0 py-4 bg-transparent border-b border-gray-200 rounded-none focus:outline-none focus:border-luxury-text text-luxury-text transition-all duration-300 placeholder:text-gray-300 font-light text-lg"
                                 placeholder="e.g. The Grand Resort, Geneva">
                         </div>
 
                         <div class="grid md:grid-cols-2 gap-12">
                             <div>
-                                <label class="block text-[10px] font-bold text-gray-500 uppercase tracking-[0.3em] mb-2 opacity-80">Professional Email</label>
+                                <label class="block text-[10px] font-bold text-gray-400 uppercase tracking-[0.3em] mb-2">Professional Email</label>
                                 <input type="email" name="email" required
-                                    class="w-full px-0 py-4 bg-transparent border-b border-white/10 rounded-none focus:outline-none focus:border-white text-white transition-all duration-700 placeholder:text-gray-700 font-light text-lg"
+                                    class="w-full px-0 py-4 bg-transparent border-b border-gray-200 rounded-none focus:outline-none focus:border-luxury-text text-luxury-text transition-all duration-300 placeholder:text-gray-300 font-light text-lg"
                                     placeholder="director@hotel.com">
                             </div>
 
                             <div>
-                                <label class="block text-[10px] font-bold text-gray-500 uppercase tracking-[0.3em] mb-2 opacity-80">Capacity</label>
-                                <select name="rooms" required class="w-full px-0 py-4 bg-transparent border-b border-white/10 rounded-none focus:outline-none focus:border-white text-white transition-all duration-700 appearance-none font-light text-lg cursor-pointer">
-                                    <option value="" disabled selected class="text-gray-800">Select total rooms...</option>
-                                    <option value="Under 50" class="text-gray-800">Under 50 (Boutique)</option>
-                                    <option value="50-150" class="text-gray-800">50 - 150 Rooms</option>
-                                    <option value="150+" class="text-gray-800">150+ Rooms (Resort)</option>
+                                <label class="block text-[10px] font-bold text-gray-400 uppercase tracking-[0.3em] mb-2">Capacity</label>
+                                <select name="rooms" required class="w-full px-0 py-4 bg-transparent border-b border-gray-200 rounded-none focus:outline-none focus:border-luxury-text text-luxury-text transition-all duration-300 appearance-none font-light text-lg cursor-pointer">
+                                    <option value="" disabled selected class="text-gray-400">Select total rooms...</option>
+                                    <option value="Under 50">Under 50 (Boutique)</option>
+                                    <option value="50-150">50 - 150 Rooms</option>
+                                    <option value="150+">150+ Rooms (Resort)</option>
                                 </select>
                             </div>
                         </div>
 
                         <div>
-                            <label class="block text-[10px] font-bold text-gray-500 uppercase tracking-[0.3em] mb-2 opacity-80 flex justify-between items-center">
+                            <label class="block text-[10px] font-bold text-gray-400 uppercase tracking-[0.3em] mb-2 flex justify-between items-center">
                                 <span>TripAdvisor / Google Profile URL</span>
-                                <span class="text-[8px] text-gray-400 tracking-widest flex items-center gap-1">
-                                    <svg class="w-3 h-3 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                                <span class="text-[8px] text-gray-400 tracking-widest flex items-center gap-1 font-bold">
+                                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
                                     Audit required
                                 </span>
                             </label>
                             <input type="url" name="profile_link" required
-                                class="w-full px-0 py-4 bg-transparent border-b border-white/10 rounded-none focus:outline-none focus:border-white text-white transition-all duration-700 placeholder:text-gray-700 font-light text-lg"
+                                class="w-full px-0 py-4 bg-transparent border-b border-gray-200 rounded-none focus:outline-none focus:border-luxury-text text-luxury-text transition-all duration-300 placeholder:text-gray-300 font-light text-lg"
                                 placeholder="https://www...">
                         </div>
                     </div>
 
-                    <button type="submit" class="w-full bg-transparent border border-white/20 text-white font-medium py-6 rounded-sm transition-all duration-700 hover:bg-white hover:text-luxury-bg cursor-pointer group">
-                        <span class="uppercase tracking-[0.2em] text-xs">Submit Request</span>
+                    <button type="submit" class="w-full bg-luxury-text text-white font-medium py-6 rounded transition-all duration-500 hover:bg-black hover:shadow-lg cursor-pointer group">
+                        <span class="uppercase tracking-[0.2em] text-xs font-bold">Submit Application</span>
                     </button>
                     
                 </form>
+
+                <!-- Success State (hidden by default) -->
+                <div id="formSuccess" class="hidden text-center py-16">
+                    <div class="w-16 h-16 mx-auto mb-6 rounded-full bg-luxury-emerald/10 flex items-center justify-center">
+                        <svg class="w-8 h-8 text-luxury-emerald" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                    </div>
+                    <h3 class="font-serif text-2xl text-luxury-text mb-4">Application Received</h3>
+                    <p class="text-gray-600 font-light max-w-md mx-auto">Thank you for your interest. Our team will review your property within 24 hours and reach out with a free reputation audit.</p>
+                </div>
             </div>
             
-            <div class="text-center mt-12 flex items-center justify-center gap-6 text-[10px] text-gray-500 font-medium tracking-widest uppercase opacity-60">
-                <span class="flex items-center gap-1"><svg class="w-3 h-3 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg> Secure</span>
+            <div class="text-center mt-12 flex items-center justify-center gap-6 text-[10px] text-gray-400 font-bold tracking-widest uppercase">
+                <span class="flex items-center gap-1"><svg class="w-3 h-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg> Secure</span>
                 <span>•</span>
                 <span>Zero Setup Fees</span>
                 <span>•</span>
@@ -480,40 +880,93 @@
         </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer class="border-t border-white/5 py-16 bg-luxury-bg">
-        <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
-            <div class="flex items-center gap-3 opacity-30">
-                <span class="w-1.5 h-1.5 rounded-full bg-gray-500"></span>
-                <span class="font-bold text-sm tracking-[0.2em] text-white">StaffPulse.eu</span>
+    <!-- ============================================ -->
+    <!-- FOOTER — Expanded                            -->
+    <!-- ============================================ -->
+    <footer class="border-t border-gray-200 py-16 bg-white">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-start gap-12 mb-12">
+                <!-- Brand -->
+                <div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="w-1.5 h-1.5 rounded-full bg-luxury-emerald"></span>
+                        <span class="font-bold text-sm tracking-[0.2em] text-luxury-text">StaffPulse.eu</span>
+                    </div>
+                    <p class="text-xs text-gray-500 font-light max-w-xs leading-relaxed">Enterprise reputation engine for premium hospitality. Turn every guest interaction into your strongest marketing asset.</p>
+                </div>
+
+                <!-- Links -->
+                <div class="flex gap-12">
+                    <div>
+                        <h6 class="text-[10px] font-bold text-luxury-text uppercase tracking-[0.2em] mb-4">Product</h6>
+                        <ul class="space-y-3">
+                            <li><a href="#solution" class="text-xs text-gray-500 hover:text-luxury-text transition-colors font-light">How It Works</a></li>
+                            <li><a href="#why-it-works" class="text-xs text-gray-500 hover:text-luxury-text transition-colors font-light">Why It Works</a></li>
+                            <li><a href="#faq" class="text-xs text-gray-500 hover:text-luxury-text transition-colors font-light">FAQ</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h6 class="text-[10px] font-bold text-luxury-text uppercase tracking-[0.2em] mb-4">Company</h6>
+                        <ul class="space-y-3">
+                            <li><a href="#apply" class="text-xs text-gray-500 hover:text-luxury-text transition-colors font-light">Apply for Pilot</a></li>
+                            <li><a href="mailto:hello@staffpulse.eu" class="text-xs text-gray-500 hover:text-luxury-text transition-colors font-light">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- CTA -->
+                <div class="text-center md:text-right">
+                    <a href="#apply" class="inline-flex items-center gap-2 bg-luxury-text hover:bg-black text-white font-bold text-[10px] uppercase tracking-[0.2em] px-6 py-3 rounded transition-all duration-300">
+                        Become a Founding Partner
+                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </a>
+                </div>
             </div>
-            <div class="text-[10px] text-gray-600 font-medium text-center md:text-right tracking-widest uppercase">
-                <p>&copy; 2026 StaffPulse Enterprise Solution.</p>
-                <p class="mt-2">Architected by <span class="text-gray-400">Retek</span> for premium hospitality.</p>
+
+            <!-- Bottom Bar -->
+            <div class="border-t border-gray-100 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <div class="text-[10px] text-gray-400 font-medium tracking-widest uppercase">
+                    <p>&copy; 2026 StaffPulse Enterprise Solution.</p>
+                </div>
+                <div class="text-[10px] text-gray-400 font-medium tracking-widest uppercase">
+                    <p>Architected by <span class="text-gray-600 font-bold">Retek</span> for premium hospitality.</p>
+                </div>
             </div>
         </div>
     </footer>
 
+    <!-- ============================================ -->
+    <!-- STICKY MOBILE CTA                            -->
+    <!-- ============================================ -->
+    <div id="stickyCta" class="sticky-cta fixed bottom-0 left-0 right-0 z-40 md:hidden bg-white/95 backdrop-blur-xl border-t border-gray-200 p-4 shadow-[0_-10px_30px_rgba(0,0,0,0.1)]">
+        <a href="#apply" class="flex items-center justify-center gap-2 bg-luxury-text hover:bg-black text-white font-bold text-xs uppercase tracking-[0.2em] w-full py-4 rounded-lg transition-all duration-300">
+            Apply as Founding Partner
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+        </a>
+    </div>
+
     <!-- Image Modal -->
-    <div id="imageModal" class="fixed inset-0 z-50 hidden bg-black/90 backdrop-blur-sm flex items-center justify-center p-4 opacity-0 transition-opacity duration-300" onclick="closeImageModal()">
-        <button class="absolute top-6 right-6 text-white/70 hover:text-white transition-colors" onclick="closeImageModal()">
+    <div id="imageModal" class="fixed inset-0 z-50 hidden bg-white/95 backdrop-blur-sm flex items-center justify-center p-4 opacity-0 transition-opacity duration-300" onclick="closeImageModal()">
+        <button class="absolute top-6 right-6 text-gray-500 hover:text-black transition-colors" onclick="closeImageModal()">
             <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
         </button>
-        <img id="modalImage" src="" alt="Enlarged view" class="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl scale-95 transition-transform duration-300" onclick="event.stopPropagation()">
+        <img id="modalImage" src="" alt="Enlarged view" class="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl scale-95 transition-transform duration-300 border border-gray-200" onclick="event.stopPropagation()">
     </div>
 
     <script>
+        // ===========================
+        // Image Modal
+        // ===========================
         function openImageModal(src) {
             const modal = document.getElementById('imageModal');
             const modalImg = document.getElementById('modalImage');
             modalImg.src = src;
             modal.classList.remove('hidden');
-            // Force reflow
             void modal.offsetWidth;
             modal.classList.remove('opacity-0');
             modalImg.classList.remove('scale-95');
             modalImg.classList.add('scale-100');
-            document.body.style.overflow = 'hidden'; // Prevent scrolling
+            document.body.style.overflow = 'hidden';
         }
 
         function closeImageModal() {
@@ -522,20 +975,159 @@
             modal.classList.add('opacity-0');
             modalImg.classList.remove('scale-100');
             modalImg.classList.add('scale-95');
-            
             setTimeout(() => {
                 modal.classList.add('hidden');
-                document.body.style.overflow = ''; // Restore scrolling
+                document.body.style.overflow = '';
             }, 300);
         }
 
-        // Close on escape key
         document.addEventListener('keydown', function(event) {
             if (event.key === 'Escape') {
                 const modal = document.getElementById('imageModal');
                 if (!modal.classList.contains('hidden')) {
                     closeImageModal();
                 }
+            }
+        });
+
+        // ===========================
+        // Mobile Menu
+        // ===========================
+        const hamburgerBtn = document.getElementById('hamburgerBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const closeMobileMenuBtn = document.getElementById('closeMobileMenu');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+        hamburgerBtn.addEventListener('click', () => {
+            mobileMenu.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        });
+
+        closeMobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.remove('open');
+            document.body.style.overflow = '';
+        });
+
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('open');
+                document.body.style.overflow = '';
+            });
+        });
+
+        // ===========================
+        // FAQ Accordion
+        // ===========================
+        function toggleFaq(button) {
+            const answer = button.nextElementSibling;
+            const chevron = button.querySelector('.faq-chevron');
+            const isOpen = answer.classList.contains('open');
+
+            // Close all others
+            document.querySelectorAll('.faq-answer').forEach(a => a.classList.remove('open'));
+            document.querySelectorAll('.faq-chevron').forEach(c => c.classList.remove('rotated'));
+
+            if (!isOpen) {
+                answer.classList.add('open');
+                chevron.classList.add('rotated');
+            }
+        }
+
+        // ===========================
+        // Scroll Reveal Animations
+        // ===========================
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        document.querySelectorAll('.reveal').forEach(el => {
+            revealObserver.observe(el);
+        });
+
+        // ===========================
+        // Active Nav Link Highlight
+        // ===========================
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        const navObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === '#' + entry.target.id) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }, { threshold: 0.3 });
+
+        sections.forEach(section => navObserver.observe(section));
+
+        // ===========================
+        // Sticky Mobile CTA
+        // ===========================
+        const stickyCta = document.getElementById('stickyCta');
+        const applySection = document.getElementById('apply');
+
+        const stickyObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    stickyCta.classList.remove('visible');
+                } else {
+                    // Only show after scrolling past hero
+                    if (window.scrollY > 600) {
+                        stickyCta.classList.add('visible');
+                    }
+                }
+            });
+        }, { threshold: 0.1 });
+
+        stickyObserver.observe(applySection);
+
+        // Show/hide sticky CTA on scroll
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.scrollY;
+            if (currentScroll < 600) {
+                stickyCta.classList.remove('visible');
+            }
+            lastScroll = currentScroll;
+        }, { passive: true });
+
+        // ===========================
+        // Form Submission Handler
+        // ===========================
+        const form = document.getElementById('applicationForm');
+        const formContainer = document.getElementById('formContainer');
+        const formSuccess = document.getElementById('formSuccess');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const formData = new FormData(form);
+            
+            try {
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: { 'Accept': 'application/json' }
+                });
+
+                if (response.ok) {
+                    form.classList.add('hidden');
+                    formSuccess.classList.remove('hidden');
+                    formSuccess.classList.add('form-success');
+                }
+            } catch (error) {
+                // Fallback: submit normally
+                form.submit();
             }
         });
     </script>
