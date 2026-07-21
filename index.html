@@ -296,9 +296,9 @@
                     <span class="text-[10px] text-gray-500 font-semibold tracking-[0.15em] uppercase">For hotels where reputation directly drives revenue</span>
                 </div>
 
-                <!-- Trust Bar -->
+                <!-- Trust Bar — Google & TripAdvisor only -->
                 <div class="flex flex-wrap items-center gap-6 text-luxury-textmuted text-sm">
-                    <span class="text-[9px] font-bold tracking-[0.2em] uppercase text-gray-400">Works with:</span>
+                    <span class="text-[9px] font-bold tracking-[0.2em] uppercase text-gray-400">Drives reviews to:</span>
                     <div class="flex items-center gap-2 grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100 cursor-default">
                         <img src="https://cdn.simpleicons.org/google" class="w-4 h-4" alt="Google" loading="lazy" />
                         <span class="font-bold tracking-widest text-[10px] uppercase">Google</span>
@@ -578,9 +578,10 @@
                         <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0a8 8 0 11-16 0 8 8 0 0116 0z"></path></svg>
                     </div>
                     <h4 class="text-lg font-serif text-luxury-text mb-4">One Scan. 4 Seconds.</h4>
-                    <p class="text-gray-600 font-light text-sm leading-loose">Guest scans a premium, branded QR code — which also serves as a digital hub for Wi-Fi access, F&B menu, and room service. Presented by staff at pool, restaurant, or reception immediately after a great moment.</p>
-                    <div class="mt-4 inline-flex items-center gap-2 bg-gray-100 rounded-lg px-3 py-2">
-                        <span class="text-[10px] text-gray-600 font-medium uppercase tracking-widest">Also: Wi-Fi · Menu · Feedback</span>
+                    <p class="text-gray-600 font-light text-sm leading-loose">A staff member presents a branded QR card to a guest at the peak emotional moment — after a great meal, a poolside cocktail, or a seamless check-in. The guest scans and rates in under 4 seconds. No app, no login, no friction.</p>
+                    <div class="mt-4 p-3 bg-blue-50 border border-blue-100 rounded-lg">
+                        <p class="text-[10px] font-bold text-blue-700 uppercase tracking-wider mb-1">📄 Self-Service PDF Generator</p>
+                        <p class="text-[10px] text-blue-600 font-light leading-relaxed">The system generates ready-to-print PDF files with unique QR codes for each staff member. Your hotel decides how to print them — on premium card stock, tent cards, or materials matching your interior design. Zero vendor dependency.</p>
                     </div>
                 </div>
 
@@ -594,7 +595,7 @@
                         <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path></svg>
                     </div>
                     <h4 class="text-lg font-serif text-luxury-text mb-4">The Legal Dual-Path</h4>
-                    <p class="text-gray-600 font-light text-sm leading-loose mb-4">Guest rates their experience. <strong class="text-luxury-text">Both paths always show the Google review link</strong> — this is what makes us 100% compliant. The psychology does the routing.</p>
+                    <p class="text-gray-600 font-light text-sm leading-loose mb-4">Guest rates their experience. <strong class="text-luxury-text">Both paths always display links to Google AND TripAdvisor</strong> — this is the precise mechanism that guarantees 100% compliance with the EU Omnibus Directive. No filtering. No hiding. The psychology does the routing.</p>
                     <!-- Dual Path Visual -->
                     <div class="space-y-2">
                         <div class="flex items-center gap-3 bg-luxury-emerald/5 border border-luxury-emerald/20 rounded-lg px-3 py-2.5">
@@ -603,7 +604,7 @@
                             </div>
                             <div>
                                 <p class="text-[11px] font-bold text-luxury-emerald">★★★★★ Happy Guest</p>
-                                <p class="text-[10px] text-gray-500">Prominent Google/TripAdvisor button + link</p>
+                                <p class="text-[10px] text-gray-500">Prominent Google + TripAdvisor buttons — one tap to publish</p>
                             </div>
                         </div>
                         <div class="flex items-center gap-3 bg-amber-50 border border-amber-200 rounded-lg px-3 py-2.5">
@@ -612,7 +613,7 @@
                             </div>
                             <div>
                                 <p class="text-[11px] font-bold text-amber-700">★★☆ Unhappy Guest</p>
-                                <p class="text-[10px] text-gray-500">Crisis form shown first, Google link still present</p>
+                                <p class="text-[10px] text-gray-500">Crisis form first — Google & TripAdvisor links always visible below. Omnibus-compliant.</p>
                             </div>
                         </div>
                     </div>
@@ -681,12 +682,34 @@
 
                     <div class="grid md:grid-cols-2 gap-10">
                         <div>
-                            <p class="text-sm text-gray-600 font-light leading-relaxed mb-6">Points, badges, and leaderboards fuel healthy competition. Your bartenders, waiters, and receptionists compete on a transparent screen in the staff room — visible to everyone, every shift.</p>
+                            <p class="text-sm text-gray-600 font-light leading-relaxed mb-4">Points, badges, and leaderboards fuel healthy competition. Your bartenders, waiters, and receptionists compete on a live scoreboard in the staff room — visible every shift.</p>
 
-                            <!-- Key design decision explanation -->
-                            <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
-                                <p class="text-[11px] font-bold text-blue-700 uppercase tracking-wider mb-1">⚙️ Anti-Spam Architecture</p>
-                                <p class="text-xs text-blue-600 font-light leading-relaxed">Points are awarded for <strong>the number of unique QR scans</strong> by each employee's personal code — <em>not</em> only for 5-star results. This prevents gaming the system and keeps the review profile looking organic to Google's anti-spam algorithms.</p>
+                            <!-- Core scoring logic -->
+                            <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-4">
+                                <p class="text-[11px] font-bold text-blue-700 uppercase tracking-wider mb-1">⚙️ Scored on Scans, Not Stars</p>
+                                <p class="text-xs text-blue-600 font-light leading-relaxed">Points are awarded for <strong>the number of unique QR scans</strong> on each employee's personal code — not for achieving a 5-star rating. This is a critical design decision with two strategic consequences:</p>
+                            </div>
+
+                            <!-- Two strategic benefits -->
+                            <div class="space-y-3">
+                                <div class="flex gap-3 items-start">
+                                    <div class="w-5 h-5 bg-luxury-emerald/10 rounded flex items-center justify-center flex-shrink-0 mt-0.5">
+                                        <span class="text-luxury-emerald text-[10px] font-bold">1</span>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs font-bold text-luxury-text mb-0.5">Eliminates Cherry-Picking</p>
+                                        <p class="text-[11px] text-gray-500 font-light leading-relaxed">Staff don't fear handing their QR card to a dissatisfied guest — their points come from the scan, not the outcome. This is exactly what keeps the Crisis Shield working: staff engage everyone, even the unhappy ones.</p>
+                                    </div>
+                                </div>
+                                <div class="flex gap-3 items-start">
+                                    <div class="w-5 h-5 bg-luxury-emerald/10 rounded flex items-center justify-center flex-shrink-0 mt-0.5">
+                                        <span class="text-luxury-emerald text-[10px] font-bold">2</span>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs font-bold text-luxury-text mb-0.5">Protects Against Google Penalties</p>
+                                        <p class="text-[11px] text-gray-500 font-light leading-relaxed">When staff beg guests for "5 stars," Google's anti-manipulation algorithm detects the pattern and may shadow-ban your review profile. With StaffPulse, staff ask guests to <em>scan</em> — not to rate highly. Reviews look organic because they are.</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
@@ -703,7 +726,7 @@
                                             <span class="text-sm font-semibold text-luxury-text">Sarah Jenkins</span>
                                             <span class="text-[10px] text-gray-400 ml-2">Pool Bar</span>
                                         </div>
-                                        <span class="text-xs font-bold text-luxury-emerald">142 pts</span>
+                                        <span class="text-xs font-bold text-luxury-emerald">142 scans</span>
                                     </div>
                                     <div class="flex items-center gap-3 px-4 py-3 opacity-75">
                                         <div class="w-7 h-7 bg-gray-100 rounded-full flex items-center justify-center text-gray-500 font-bold text-xs">🥈</div>
@@ -711,7 +734,7 @@
                                             <span class="text-sm font-semibold text-luxury-text">Marco Ricci</span>
                                             <span class="text-[10px] text-gray-400 ml-2">Restaurant</span>
                                         </div>
-                                        <span class="text-xs font-bold text-gray-500">128 pts</span>
+                                        <span class="text-xs font-bold text-gray-500">128 scans</span>
                                     </div>
                                     <div class="flex items-center gap-3 px-4 py-3 opacity-60">
                                         <div class="w-7 h-7 bg-gray-100 rounded-full flex items-center justify-center text-gray-500 font-bold text-xs">🥉</div>
@@ -719,11 +742,11 @@
                                             <span class="text-sm font-semibold text-luxury-text">Anna Kowalski</span>
                                             <span class="text-[10px] text-gray-400 ml-2">Reception</span>
                                         </div>
-                                        <span class="text-xs font-bold text-gray-500">97 pts</span>
+                                        <span class="text-xs font-bold text-gray-500">97 scans</span>
                                     </div>
                                 </div>
                             </div>
-                            <p class="text-xs text-gray-500 font-light">Staff actively ask guests to scan their personal QR code. <strong class="text-luxury-text">You don't need to manage anyone.</strong></p>
+                            <p class="text-xs text-gray-500 font-light">Your internal leaderboard and the bonuses you define are the only motivation needed. <strong class="text-luxury-text">No enforcement. No monitoring. No additional management overhead.</strong></p>
                         </div>
                     </div>
                 </div>
@@ -737,9 +760,9 @@
                         <span class="w-1.5 h-1.5 bg-luxury-gold rounded-full"></span>
                         The GM's Dream Scenario
                     </div>
-                    <h4 class="font-serif text-2xl md:text-3xl font-medium mb-4">Your staff generates 5-star reviews autonomously — every shift, without any enforcement.</h4>
+                    <h4 class="font-serif text-2xl md:text-3xl font-medium mb-4">Your staff generates reviews autonomously — every shift, without any enforcement from you.</h4>
                     <p class="text-white/70 font-light leading-relaxed max-w-2xl">
-                        No enforcement. No monitoring. No additional management workload. Your bartenders and waiters actively ask guests to scan their personal QR code because their leaderboard position — and potential bonuses — depend on it. Your Google rating rises because happy guests review at peak emotional moments. Your direct bookings increase because your score stays above 4.5★.
+                        No enforcement. No monitoring. No additional management workload. Your bartenders and waiters actively ask guests to scan their personal QR code because their leaderboard position and your internal bonus structure depend on it. Reviews look organic to Google because the incentive is the <em>scan</em> — not the star rating. Your direct bookings increase as your score climbs above 4.5★ and you reclaim the revenue currently lost to OTA commissions.
                     </p>
                 </div>
             </div>
@@ -892,6 +915,19 @@
             <!-- FAQ Item 4 -->
             <div class="border border-gray-200 rounded-xl overflow-hidden bg-white">
                 <button class="faq-toggle w-full flex items-center justify-between p-6 text-left cursor-pointer hover:bg-gray-50 transition-colors" onclick="toggleFaq(this)">
+                    <span class="text-sm font-semibold text-luxury-text pr-4">What does the onboarding process look like, and how quickly can we launch?</span>
+                    <svg class="faq-chevron w-5 h-5 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div class="faq-answer">
+                    <div class="px-6 pb-6">
+                        <p class="text-sm text-gray-600 font-light leading-relaxed">Onboarding covers full cloud infrastructure configuration: your branded feedback page, unique QR codes for every staff member, Link-Shield routing, and the WhatsApp crisis alert channel. Once configured, the system generates ready-to-print PDF files — your hotel prints them on materials matching your interior and brand standards. No vendor logistics, no waiting for shipments, no IT involvement. From signed contract to live system: <strong class="text-luxury-text">48 hours.</strong> Exact investment details are included in your custom proposal.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ Item 5 -->
+            <div class="border border-gray-200 rounded-xl overflow-hidden bg-white">
+                <button class="faq-toggle w-full flex items-center justify-between p-6 text-left cursor-pointer hover:bg-gray-50 transition-colors" onclick="toggleFaq(this)">
                     <span class="text-sm font-semibold text-luxury-text pr-4">What does the pricing model look like?</span>
                     <svg class="faq-chevron w-5 h-5 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                 </button>
@@ -901,8 +937,6 @@
                     </div>
                 </div>
             </div>
-
-
 
             <!-- FAQ Item 6 -->
             <div class="border border-gray-200 rounded-xl overflow-hidden bg-white">
@@ -931,8 +965,6 @@
                     Every premium property has a unique guest dynamic. Leave your contact details below, and our team will prepare a personalized reputation strategy and custom pricing model tailored directly to your hotel's capacity.
                 </p>
             </div>
-
-
 
             <!-- What Happens Next Timeline -->
             <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-0 mb-16 reveal">
