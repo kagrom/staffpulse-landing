@@ -195,14 +195,14 @@
     </style>
 </head>
 
-<body class="antialiased selection:bg-luxury-emerald/20 selection:text-luxury-emerald overflow-x-hidden font-light">
+<body class="antialiased selection:bg-luxury-emerald/20 selection:text-luxury-emerald overflow-x-hidden font-light pb-20 md:pb-0">
     
     <div class="ambient-glow"></div>
 
     <!-- ============================================ -->
     <!-- NAVIGATION — Sticky with anchor links        -->
     <!-- ============================================ -->
-    <nav id="mainNav" class="fixed w-full z-50 glass-card border-b border-black/5 py-4 px-6 md:px-12 flex justify-between items-center transition-all duration-700 rounded-none">
+    <nav id="mainNav" class="fixed w-full z-50 glass-card border-b border-black/5 py-3 md:py-4 px-4 md:px-12 flex justify-between items-center transition-all duration-700 rounded-none">
         <div class="flex items-center gap-3">
             <span class="w-1.5 h-1.5 rounded-full bg-luxury-emerald opacity-90"></span>
             <span class="font-bold text-lg tracking-[0.1em] text-luxury-text">StaffPulse<span class="text-luxury-emerald">.eu</span></span>
@@ -241,12 +241,14 @@
     <!-- ============================================ -->
     <!-- HERO SECTION — Promise & Legal Safety        -->
     <!-- ============================================ -->
-    <header class="relative pt-40 md:pt-48 pb-28 px-6 overflow-hidden bg-luxury-bg">
+    <header class="relative pt-28 sm:pt-36 md:pt-48 pb-16 md:pb-28 px-5 md:px-6 overflow-hidden bg-luxury-bg">
         <!-- Background Image & Light Overlay -->
         <div class="absolute inset-0 z-0">
             <img src="staffpulse_hero_bg_light.jpg" alt="Luxury Sunny Hotel Resort" class="w-full h-full object-cover opacity-80 mix-blend-multiply" loading="eager">
             <div class="absolute inset-0 bg-gradient-to-r from-white via-white/80 to-transparent"></div>
             <div class="absolute inset-0 bg-gradient-to-b from-white/30 via-transparent to-white"></div>
+            <!-- Extra mobile overlay for readability -->
+            <div class="absolute inset-0 bg-white/60 sm:hidden"></div>
         </div>
 
         <div class="max-w-6xl mx-auto relative z-10 grid md:grid-cols-2 gap-12 items-center">
@@ -256,18 +258,18 @@
 
                 <!-- Legal Compliance Badge -->
                 <div class="inline-flex items-center gap-3 mb-6">
-                    <div class="legal-badge text-white text-[9px] font-bold tracking-[0.25em] uppercase px-4 py-2 rounded-full flex items-center gap-2">
+                    <div class="legal-badge text-white text-[9px] font-bold tracking-[0.2em] uppercase px-4 py-2 rounded-full flex items-center gap-2 max-w-full">
                         <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
                         100% Legal · Google Policy 2026 · EU Omnibus Directive
                     </div>
                 </div>
 
-                <div class="inline-flex items-center gap-4 bg-white/60 backdrop-blur border border-black/5 shadow-sm text-luxury-text text-[9px] md:text-[10px] font-bold tracking-[0.3em] uppercase px-6 py-2.5 rounded mb-8">
+                <div class="inline-flex items-center gap-2 md:gap-4 bg-white/60 backdrop-blur border border-black/5 shadow-sm text-luxury-text text-[10px] font-bold tracking-[0.15em] md:tracking-[0.3em] uppercase px-4 md:px-6 py-2.5 rounded mb-6 md:mb-8 max-w-full">
                     <span class="w-1.5 h-1.5 bg-luxury-emerald rounded-full"></span>
                     Enterprise Reputation Engine — Hotels, Resorts & SPAs
                 </div>
 
-                <h1 class="font-serif text-4xl md:text-5xl lg:text-6xl text-luxury-text tracking-tight leading-[1.15] mb-6 font-medium">
+                <h1 class="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-luxury-text tracking-tight leading-[1.15] mb-5 md:mb-6 font-medium">
                     Turn Your Staff's Daily Routine Into A Legal
                     <span class="text-transparent bg-clip-text bg-luxury-gradient"> 5-Star Review Engine.</span>
                 </h1>
@@ -276,7 +278,7 @@
                     Stop losing direct bookings to Booking.com's 22% commission.
                 </p>
 
-                <p class="text-base text-luxury-textmuted leading-relaxed mb-4 font-light max-w-lg">
+                <p class="text-sm md:text-base text-luxury-textmuted leading-relaxed mb-4 font-light">
                     The only system fully compliant with <strong class="text-luxury-text font-semibold">Google's 2026 review policy</strong> and the <strong class="text-luxury-text font-semibold">EU Omnibus Directive</strong> — protecting your property from regulatory fines while organically growing your 5-star rating.
                 </p>
 
@@ -286,24 +288,24 @@
                     <p class="text-[11px] text-amber-800 font-medium leading-relaxed">Old review-gating systems are now <strong>illegal</strong>. Hotels using them face Google bans and heavy regulatory penalties. StaffPulse was built to replace them safely.</p>
                 </div>
 
-                <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-10">
-                    <a href="#apply" class="relative group inline-flex items-center justify-center bg-luxury-text hover:bg-black text-white font-bold text-sm px-10 py-5 rounded-lg transition-all duration-500 shadow-[0_10px_30px_rgba(10,25,47,0.2)]">
+                <div class="flex flex-col items-stretch sm:flex-row sm:items-center gap-3 md:gap-4 mb-8 md:mb-10">
+                    <a href="#apply" class="relative group inline-flex items-center justify-center bg-luxury-text hover:bg-black text-white font-bold text-sm px-8 md:px-10 py-4 md:py-5 rounded-lg transition-all duration-500 shadow-[0_10px_30px_rgba(10,25,47,0.2)] w-full sm:w-auto">
                         <span class="relative z-10 flex items-center gap-3 tracking-[0.1em] uppercase text-xs">
                             Request a Custom Offer
                             <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                         </span>
                     </a>
-                    <span class="text-[10px] text-gray-500 font-semibold tracking-[0.15em] uppercase">For hotels where reputation directly drives revenue</span>
+                    <span class="text-[10px] text-gray-500 font-semibold tracking-[0.15em] uppercase text-center sm:text-left">For hotels where reputation directly drives revenue</span>
                 </div>
 
                 <!-- Trust Bar — Google & TripAdvisor only -->
-                <div class="flex flex-wrap items-center gap-6 text-luxury-textmuted text-sm">
-                    <span class="text-[9px] font-bold tracking-[0.2em] uppercase text-gray-400">Drives reviews to:</span>
+                <div class="flex flex-wrap items-center gap-4 text-luxury-textmuted text-sm">
+                    <span class="text-[10px] font-bold tracking-[0.15em] uppercase text-gray-400">Drives reviews to:</span>
                     <div class="flex items-center gap-2 grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100 cursor-default">
                         <img src="https://cdn.simpleicons.org/google" class="w-4 h-4" alt="Google" loading="lazy" />
                         <span class="font-bold tracking-widest text-[10px] uppercase">Google</span>
                     </div>
-                    <span class="w-1 h-1 bg-gray-300 rounded-full hidden sm:block"></span>
+                    <span class="w-1 h-1 bg-gray-300 rounded-full"></span>
                     <div class="flex items-center gap-2 grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100 cursor-default">
                         <img src="https://cdn.simpleicons.org/tripadvisor/34E0A1" class="w-5 h-5" alt="TripAdvisor" loading="lazy" />
                         <span class="font-bold tracking-widest text-[10px] uppercase">TripAdvisor</span>
@@ -370,7 +372,7 @@
     <!-- ============================================ -->
     <!-- KEY METRICS — Trust Signals                  -->
     <!-- ============================================ -->
-    <section class="max-w-6xl mx-auto px-6 -mt-14 relative z-20 mb-20 reveal">
+    <section class="max-w-6xl mx-auto px-4 md:px-6 -mt-8 md:-mt-14 relative z-20 mb-12 md:mb-20 reveal">
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6">
             <!-- Metric Card 1 -->
             <div class="glass-card rounded-xl p-6 hover:-translate-y-1 transition-transform duration-300 cursor-default">
@@ -410,16 +412,16 @@
     <!-- ============================================ -->
     <!-- THE PROBLEM / LOSS AVERSION                  -->
     <!-- ============================================ -->
-    <section id="problem" class="max-w-6xl mx-auto px-6 py-32 border-t border-gray-200 relative">
-        <div class="text-center mb-20 reveal">
+    <section id="problem" class="max-w-6xl mx-auto px-4 md:px-6 py-16 md:py-32 border-t border-gray-200 relative">
+        <div class="text-center mb-10 md:mb-20 reveal">
             <h2 class="text-[10px] font-bold uppercase tracking-[0.3em] text-gray-400 mb-4">The Cost of Inaction — Executive Financial Brief</h2>
-            <p class="font-serif text-3xl md:text-4xl font-medium text-luxury-text">Every Month Without StaffPulse<br>Is a Month You're Funding Your Competition.</p>
+            <p class="font-serif text-2xl md:text-4xl font-medium text-luxury-text">Every Month Without StaffPulse<br class="hidden sm:block"> Is a Month You're Funding Your Competition.</p>
         </div>
 
         <div class="grid md:grid-cols-2 gap-6 md:gap-10">
             <!-- Left Card: The Email Loop -->
-            <div class="glass-card p-10 md:p-14 rounded-xl relative overflow-hidden reveal">
-                <h3 class="text-[10px] font-bold text-gray-500 mb-12 tracking-[0.3em] uppercase">Your Current Reality (Without StaffPulse)</h3>
+            <div class="glass-card p-6 md:p-14 rounded-xl relative overflow-hidden reveal">
+                <h3 class="text-[10px] font-bold text-gray-500 mb-8 md:mb-12 tracking-[0.3em] uppercase">Your Current Reality (Without StaffPulse)</h3>
                 
                 <div class="flex flex-col items-center">
                     <div class="border border-gray-200 bg-gray-50 px-8 py-4 rounded w-full max-w-sm text-center shadow-sm">
@@ -446,7 +448,7 @@
             </div>
 
             <!-- Right Card: Financial Impact -->
-            <div class="glass-card p-10 md:p-14 rounded-xl relative overflow-hidden reveal" style="transition-delay: 0.15s;">
+            <div class="glass-card p-6 md:p-14 rounded-xl relative overflow-hidden reveal" style="transition-delay: 0.15s;">
                 <h3 class="text-[10px] font-bold text-gray-500 mb-10 tracking-[0.3em] uppercase">The Algorithmic Domino Effect</h3>
                 
                 <!-- Rating Drop Visual -->
@@ -504,9 +506,9 @@
     <!-- ============================================ -->
     <!-- ROI IMPACT PROJECTION                        -->
     <!-- ============================================ -->
-    <section class="bg-white border-y border-gray-200 py-24 overflow-hidden">
-        <div class="max-w-5xl mx-auto px-6 reveal">
-            <div class="text-center mb-16">
+    <section class="bg-white border-y border-gray-200 py-14 md:py-24 overflow-hidden">
+        <div class="max-w-5xl mx-auto px-4 md:px-6 reveal">
+            <div class="text-center mb-10 md:mb-16">
                 <h2 class="text-[10px] font-bold uppercase tracking-[0.3em] text-gray-400 mb-4">Industry Research</h2>
                 <h3 class="font-serif text-3xl md:text-4xl font-medium text-luxury-text leading-tight">
                     What a 0.5★ Improvement Means for Your RevPAR
@@ -514,7 +516,7 @@
                 <p class="text-gray-500 font-light mt-4 max-w-xl mx-auto text-sm">Based on peer-reviewed hospitality research and industry benchmarks</p>
             </div>
 
-            <div class="grid md:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-5 md:gap-8">
                 <div class="text-center p-8 border border-gray-100 rounded-xl bg-gray-50/50 hover:shadow-lg transition-shadow duration-300">
                     <div class="text-4xl md:text-5xl font-serif text-luxury-emerald font-semibold mb-4">+9%</div>
                     <p class="text-sm font-semibold text-luxury-text mb-2">RevPAR Increase</p>
@@ -543,20 +545,20 @@
     <!-- ============================================ -->
     <!-- THE SOLUTION — Dual-Path Feedback Blueprint  -->
     <!-- ============================================ -->
-    <section id="solution" class="relative bg-luxury-bg py-32 overflow-hidden">
+    <section id="solution" class="relative bg-luxury-bg py-16 md:py-32 overflow-hidden">
         
-        <div class="max-w-6xl mx-auto px-6 relative z-10">
+        <div class="max-w-6xl mx-auto px-4 md:px-6 relative z-10">
             
-            <div class="text-center mb-20 reveal">
+            <div class="text-center mb-10 md:mb-20 reveal">
                 <h2 class="text-[10px] font-bold uppercase tracking-[0.3em] text-luxury-emerald mb-4">The Dual-Path Feedback System</h2>
-                <h3 class="font-serif text-3xl md:text-5xl font-medium text-luxury-text leading-tight">
+                <h3 class="font-serif text-2xl md:text-5xl font-medium text-luxury-text leading-tight">
                     The 4-Second Interaction That Protects<br>Your Revenue. Legally.
                 </h3>
                 <p class="text-gray-500 font-light mt-4 max-w-2xl mx-auto">Fully compliant with Google's 2026 review policy. All guests always have access to leave a Google review — that's what makes it legal. The psychology does the rest.</p>
             </div>
 
             <!-- Solution Media Showcase -->
-            <div class="mb-24 relative max-w-5xl mx-auto reveal">
+            <div class="mb-12 md:mb-24 relative max-w-5xl mx-auto reveal">
                 <div class="relative z-10 bg-white p-2.5 rounded-2xl shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] border border-gray-100 group">
                     <div class="rounded-xl overflow-hidden relative">
                         <img src="main.png" alt="StaffPulse Solution" onclick="openImageModal(this.src)" class="w-full h-auto object-cover opacity-95 group-hover:scale-[1.01] group-hover:opacity-100 transition-all duration-700 cursor-pointer" loading="lazy">
@@ -570,7 +572,7 @@
             </div>
             
             <!-- 3 Steps Grid — Dual-Path Explained -->
-            <div class="grid md:grid-cols-3 gap-10 mb-16">
+            <div class="grid md:grid-cols-3 gap-8 md:gap-10 mb-10 md:mb-16">
 
                 <!-- Step 01 -->
                 <div class="border-t border-gray-200 pt-8 reveal">
@@ -641,7 +643,7 @@
             </div>
 
             <!-- Zero Management Callout -->
-            <div class="py-10 px-8 border border-gray-100 bg-gray-50 rounded-xl max-w-4xl mx-auto text-center mt-12 shadow-sm reveal">
+            <div class="py-8 md:py-10 px-5 md:px-8 border border-gray-100 bg-gray-50 rounded-xl max-w-4xl mx-auto text-center mt-8 md:mt-12 shadow-sm reveal">
                 <h5 class="text-xs tracking-[0.3em] uppercase text-luxury-text font-bold mb-4">Zero Management Overhead · No PMS Integration · Live in 48 Hours</h5>
                 <p class="text-sm text-gray-600 font-light leading-loose max-w-2xl mx-auto">
                     The system operates autonomously. Your staff needs a 15-minute briefing — then it runs itself, powered by your team's self-interest in the gamification engine below.
@@ -662,12 +664,12 @@
     <!-- ============================================ -->
     <!-- STAFF ENGINE — Gamification & Leaderboard    -->
     <!-- ============================================ -->
-    <section id="staff-engine" class="bg-white border-y border-gray-200 py-32 overflow-hidden">
-        <div class="max-w-6xl mx-auto px-6">
+    <section id="staff-engine" class="bg-white border-y border-gray-200 py-16 md:py-32 overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4 md:px-6">
             
-            <div class="text-center mb-20 reveal">
+            <div class="text-center mb-10 md:mb-20 reveal">
                 <h2 class="text-[10px] font-bold uppercase tracking-[0.3em] text-luxury-emerald mb-4">Staff Motivation Engine</h2>
-                <h3 class="font-serif text-3xl md:text-4xl font-medium text-luxury-text leading-tight">
+                <h3 class="font-serif text-2xl md:text-4xl font-medium text-luxury-text leading-tight">
                     Why Your Team Will Love StaffPulse<br>More Than You Do.
                 </h3>
                 <p class="text-gray-500 font-light mt-4 max-w-2xl mx-auto">You don't need to enforce anything. Your staff becomes the engine — because the system is designed to directly benefit them.</p>
@@ -676,7 +678,7 @@
             <div class="max-w-4xl mx-auto mb-16">
 
                 <!-- Gamification Module — full width -->
-                <div class="glass-card p-10 md:p-14 rounded-xl reveal">
+                <div class="glass-card p-6 md:p-14 rounded-xl reveal">
                     <div class="flex items-center gap-3 mb-8">
                         <div class="bg-luxury-emerald/10 p-3 rounded-lg">
                             <svg class="w-6 h-6 text-luxury-emerald" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
@@ -757,7 +759,7 @@
             </div>
 
             <!-- Staff Advantage Summary -->
-            <div class="max-w-4xl mx-auto bg-gradient-to-br from-luxury-text to-[#1E3A8A] rounded-2xl p-10 md:p-14 text-white relative overflow-hidden reveal">
+            <div class="max-w-4xl mx-auto bg-gradient-to-br from-luxury-text to-[#1E3A8A] rounded-2xl p-7 md:p-14 text-white relative overflow-hidden reveal">
                 <div class="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/2"></div>
                 <div class="relative z-10 text-center md:text-left">
                     <div class="inline-flex items-center gap-2 bg-white/10 text-[9px] font-bold tracking-[0.3em] uppercase px-4 py-2 rounded mb-6">
@@ -776,20 +778,20 @@
     <!-- ============================================ -->
     <!-- WHY IT WORKS — Pre-Launch Credibility         -->
     <!-- ============================================ -->
-    <section id="why-it-works" class="bg-luxury-bg border-b border-gray-200 py-32 overflow-hidden">
-        <div class="max-w-6xl mx-auto px-6">
+    <section id="why-it-works" class="bg-luxury-bg border-b border-gray-200 py-16 md:py-32 overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4 md:px-6">
             
-            <div class="text-center mb-20 reveal">
+            <div class="text-center mb-10 md:mb-20 reveal">
                 <h2 class="text-[10px] font-bold uppercase tracking-[0.3em] text-luxury-emerald mb-4">Technology & Trust</h2>
-                <h3 class="font-serif text-3xl md:text-4xl font-medium text-luxury-text leading-tight">
+                <h3 class="font-serif text-2xl md:text-4xl font-medium text-luxury-text leading-tight">
                     The Science Behind the 4-Second Window
                 </h3>
                 <p class="text-gray-500 font-light mt-4 max-w-2xl mx-auto">Our methodology is grounded in behavioral psychology and validated by hospitality industry data.</p>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-10 mb-20">
+            <div class="grid md:grid-cols-2 gap-6 md:gap-10 mb-10 md:mb-20">
                 <!-- Methodology Proof -->
-                <div class="glass-card p-10 rounded-xl reveal">
+                <div class="glass-card p-6 md:p-10 rounded-xl reveal">
                     <div class="flex items-center gap-3 mb-8">
                         <div class="bg-luxury-emerald/10 p-3 rounded-lg">
                             <svg class="w-6 h-6 text-luxury-emerald" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
@@ -815,7 +817,7 @@
                 </div>
 
                 <!-- Technology & Trust -->
-                <div class="glass-card p-10 rounded-xl reveal" style="transition-delay: 0.15s;">
+                <div class="glass-card p-6 md:p-10 rounded-xl reveal" style="transition-delay: 0.15s;">
                     <div class="flex items-center gap-3 mb-8">
                         <div class="bg-luxury-emerald/10 p-3 rounded-lg">
                             <svg class="w-6 h-6 text-luxury-emerald" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
@@ -856,12 +858,12 @@
             </div>
 
             <!-- Legal Compliance Callout -->
-            <div class="max-w-4xl mx-auto border border-luxury-emerald/20 bg-luxury-emerald/[0.02] rounded-2xl p-8 md:p-12 text-center reveal">
+            <div class="max-w-4xl mx-auto border border-luxury-emerald/20 bg-luxury-emerald/[0.02] rounded-2xl p-6 md:p-12 text-center reveal">
                 <div class="inline-flex items-center gap-2 bg-luxury-emerald/10 text-luxury-emerald text-[9px] font-bold tracking-[0.3em] uppercase px-4 py-2 rounded-full mb-6">
                     <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
                     Legal Compliance Statement
                 </div>
-                <h4 class="font-serif text-2xl md:text-3xl text-luxury-text font-medium mb-4">The only review system designed specifically around Google's 2026 policy and the EU Omnibus Directive.</h4>
+                <h4 class="font-serif text-xl md:text-3xl text-luxury-text font-medium mb-4">The only review system designed specifically around Google's 2026 policy and the EU Omnibus Directive.</h4>
                 <p class="text-gray-500 font-light text-sm leading-relaxed max-w-2xl mx-auto">Unlike legacy review-gating systems that hide negative feedback from Google (now illegal), StaffPulse's Dual-Path always provides the Google review link to all guests. The psychology of crisis resolution — not illegal filtering — is what protects your score.</p>
             </div>
         </div>
@@ -870,10 +872,10 @@
     <!-- ============================================ -->
     <!-- FAQ SECTION                                  -->
     <!-- ============================================ -->
-    <section id="faq" class="max-w-4xl mx-auto px-6 py-32">
+    <section id="faq" class="max-w-4xl mx-auto px-4 md:px-6 py-16 md:py-32">
         <div class="text-center mb-16 reveal">
             <h2 class="text-[10px] font-bold uppercase tracking-[0.3em] text-gray-400 mb-4">Frequently Asked</h2>
-            <h3 class="font-serif text-3xl md:text-4xl font-medium text-luxury-text">Questions from General Managers</h3>
+            <h3 class="font-serif text-2xl md:text-4xl font-medium text-luxury-text">Questions from General Managers</h3>
         </div>
 
         <div class="space-y-4 reveal">
@@ -960,18 +962,18 @@
     <!-- ============================================ -->
     <!-- FORM SECTION — Request a Custom Offer        -->
     <!-- ============================================ -->
-    <section id="apply" class="py-32 px-6 relative bg-white border-t border-gray-200">
+    <section id="apply" class="py-16 md:py-32 px-4 md:px-6 relative bg-white border-t border-gray-200">
         <div class="max-w-3xl mx-auto relative z-10">
             
             <div class="text-center mb-12 reveal">
-                <h2 class="font-serif text-4xl md:text-5xl font-medium text-luxury-text mb-6">Request a Tailored Proposal</h2>
+                <h2 class="font-serif text-3xl md:text-5xl font-medium text-luxury-text mb-4 md:mb-6">Request a Tailored Proposal</h2>
                 <p class="text-gray-600 text-lg max-w-2xl mx-auto font-light leading-relaxed">
                     Every premium property has a unique guest dynamic. Leave your contact details below, and our team will prepare a personalized reputation strategy and custom pricing model tailored directly to your hotel's capacity.
                 </p>
             </div>
 
             <!-- What Happens Next Timeline -->
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-0 mb-16 reveal">
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-0 mb-10 md:mb-16 reveal">
                 <div class="flex items-center gap-3">
                     <div class="w-8 h-8 rounded-full bg-luxury-emerald/10 flex items-center justify-center text-luxury-emerald font-bold text-xs">1</div>
                     <span class="text-xs font-medium text-luxury-text">Offer Review (24h)</span>
@@ -989,36 +991,36 @@
             </div>
 
             <!-- Form -->
-            <div id="formContainer" class="bg-white shadow-[0_20px_50px_rgba(0,0,0,0.05)] border border-gray-100 rounded-lg p-8 md:p-16 relative overflow-hidden reveal">
+            <div id="formContainer" class="bg-white shadow-[0_20px_50px_rgba(0,0,0,0.05)] border border-gray-100 rounded-lg p-6 md:p-16 relative overflow-hidden reveal">
                 <form id="applicationForm" action="https://formspree.io/f/mojgqlza" method="POST" class="relative z-10">
                     
-                    <div class="space-y-12 mb-16">
+                    <div class="space-y-8 md:space-y-12 mb-10 md:mb-16">
 
                         <div>
                             <label class="block text-[10px] font-bold text-gray-400 uppercase tracking-[0.3em] mb-2">General Manager / Director Name</label>
                             <input type="text" name="manager_name" required
-                                class="w-full px-0 py-4 bg-transparent border-b border-gray-200 rounded-none focus:outline-none focus:border-luxury-text text-luxury-text transition-all duration-300 placeholder:text-gray-300 font-light text-lg"
+                                class="w-full px-0 py-3 md:py-4 bg-transparent border-b border-gray-200 rounded-none focus:outline-none focus:border-luxury-text text-luxury-text transition-all duration-300 placeholder:text-gray-300 font-light text-base md:text-lg"
                                 placeholder="e.g. John Doe">
                         </div>
 
                         <div>
                             <label class="block text-[10px] font-bold text-gray-400 uppercase tracking-[0.3em] mb-2">Property Name & Location</label>
                             <input type="text" name="hotel_name" required
-                                class="w-full px-0 py-4 bg-transparent border-b border-gray-200 rounded-none focus:outline-none focus:border-luxury-text text-luxury-text transition-all duration-300 placeholder:text-gray-300 font-light text-lg"
+                                class="w-full px-0 py-3 md:py-4 bg-transparent border-b border-gray-200 rounded-none focus:outline-none focus:border-luxury-text text-luxury-text transition-all duration-300 placeholder:text-gray-300 font-light text-base md:text-lg"
                                 placeholder="e.g. The Grand Resort, Geneva">
                         </div>
 
-                        <div class="grid md:grid-cols-2 gap-12">
+                        <div class="grid md:grid-cols-2 gap-8 md:gap-12">
                             <div>
                                 <label class="block text-[10px] font-bold text-gray-400 uppercase tracking-[0.3em] mb-2">Professional Email</label>
                                 <input type="email" name="email" required
-                                    class="w-full px-0 py-4 bg-transparent border-b border-gray-200 rounded-none focus:outline-none focus:border-luxury-text text-luxury-text transition-all duration-300 placeholder:text-gray-300 font-light text-lg"
+                                    class="w-full px-0 py-3 md:py-4 bg-transparent border-b border-gray-200 rounded-none focus:outline-none focus:border-luxury-text text-luxury-text transition-all duration-300 placeholder:text-gray-300 font-light text-base md:text-lg"
                                     placeholder="director@hotel.com">
                             </div>
 
                             <div>
                                 <label class="block text-[10px] font-bold text-gray-400 uppercase tracking-[0.3em] mb-2">Number of Rooms</label>
-                                <select name="rooms" required class="w-full px-0 py-4 bg-transparent border-b border-gray-200 rounded-none focus:outline-none focus:border-luxury-text text-luxury-text transition-all duration-300 appearance-none font-light text-lg cursor-pointer">
+                                <select name="rooms" required class="w-full px-0 py-3 md:py-4 bg-transparent border-b border-gray-200 rounded-none focus:outline-none focus:border-luxury-text text-luxury-text transition-all duration-300 appearance-none font-light text-base md:text-lg cursor-pointer">
                                     <option value="" disabled selected class="text-gray-400">Select room count...</option>
                                     <option value="60-100">60 – 100 Rooms (Boutique Resort)</option>
                                     <option value="100-200">100 – 200 Rooms (Mid Resort)</option>
@@ -1028,21 +1030,23 @@
                         </div>
 
                         <div>
-                            <label class="block text-[10px] font-bold text-gray-400 uppercase tracking-[0.3em] mb-2 flex justify-between items-center">
-                                <span>TripAdvisor or Google Maps Profile URL</span>
-                                <span class="text-[8px] text-luxury-emerald tracking-widest flex items-center gap-1 font-bold">
-                                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
-                                    Required for free audit
+                            <label class="block text-[10px] font-bold text-gray-400 uppercase tracking-[0.3em] mb-2">
+                                <span class="flex flex-wrap items-center justify-between gap-1">
+                                    <span>TripAdvisor or Google Maps Profile URL</span>
+                                    <span class="text-[8px] text-luxury-emerald tracking-widest flex items-center gap-1 font-bold normal-case">
+                                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                                        Required for free audit
+                                    </span>
                                 </span>
                             </label>
                             <input type="url" name="profile_link" required
-                                class="w-full px-0 py-4 bg-transparent border-b border-gray-200 rounded-none focus:outline-none focus:border-luxury-text text-luxury-text transition-all duration-300 placeholder:text-gray-300 font-light text-lg"
+                                class="w-full px-0 py-3 md:py-4 bg-transparent border-b border-gray-200 rounded-none focus:outline-none focus:border-luxury-text text-luxury-text transition-all duration-300 placeholder:text-gray-300 font-light text-base md:text-lg"
                                 placeholder="https://www.tripadvisor.com/Hotel_Review...">
                             <p class="text-[10px] text-gray-400 mt-2 font-light">We'll run a free, confidential reputation audit before our call. This is what makes StaffPulse consultations valuable, not generic.</p>
                         </div>
                     </div>
 
-                    <button type="submit" id="submitBtn" class="w-full bg-luxury-text text-white font-medium py-6 rounded transition-all duration-500 hover:bg-black hover:shadow-lg cursor-pointer group">
+                    <button type="submit" id="submitBtn" class="w-full bg-luxury-text text-white font-medium py-5 md:py-6 rounded transition-all duration-500 hover:bg-black hover:shadow-lg cursor-pointer group">
                         <span class="uppercase tracking-[0.2em] text-xs font-bold">Request Custom Offer</span>
                     </button>
                     
@@ -1071,9 +1075,9 @@
     <!-- ============================================ -->
     <!-- FOOTER — Expanded                            -->
     <!-- ============================================ -->
-    <footer class="border-t border-gray-200 py-16 bg-white">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="flex flex-col md:flex-row justify-between items-start gap-12 mb-12">
+    <footer class="border-t border-gray-200 py-12 md:py-16 bg-white">
+        <div class="max-w-6xl mx-auto px-4 md:px-6">
+            <div class="flex flex-col md:flex-row justify-between items-start gap-8 md:gap-12 mb-8 md:mb-12">
                 <!-- Brand -->
                 <div>
                     <div class="flex items-center gap-3 mb-4">
@@ -1084,7 +1088,7 @@
                 </div>
 
                 <!-- Links -->
-                <div class="flex gap-12">
+                <div class="flex gap-8 md:gap-12">
                     <div>
                         <h6 class="text-[10px] font-bold text-luxury-text uppercase tracking-[0.2em] mb-4">Product</h6>
                         <ul class="space-y-3">
